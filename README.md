@@ -1,4 +1,4 @@
-# mrcarmel Assignment
+# westagram!
 
 ## 🚩 구현 예정 목록
 
