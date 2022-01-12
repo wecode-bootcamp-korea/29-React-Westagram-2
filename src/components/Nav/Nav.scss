@@ -1,0 +1,117 @@
+$bg: #fafafa;
+$border: #dbdbdb;
+$border-focus: #c7c7c7;
+$blue: #0095f6;
+$light-blue: #c4e2fe;
+$font-grey: #8e8e8e;
+$font-black: #262626;
+$red: #ed4956;
+
+@mixin flex($direction: row, $justify: center, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+$max-width: 975px;
+$layout-padding: 20px;
+
+@mixin max-width {
+  max-width: $max-width;
+}
+
+@mixin left-right-padding {
+  padding-left: $layout-padding;
+  padding-right: $layout-padding;
+}
+
+.header {
+  position: fixed;
+  width: 100%;
+  border-bottom: 1px $border solid;
+  background-color: #fff;
+  z-index: 200;
+
+  .header-content {
+    @include flex(row, space-between, center);
+    @include left-right-padding();
+    @include max-width();
+    position: relative;
+    height: 60px;
+    margin: 0 auto;
+
+    .logo {
+      a {
+        @include flex(row, flex-start, center);
+        text-decoration: none;
+      }
+
+      i {
+        font-size: 24px;
+        margin-right: 18px;
+      }
+
+      .logo-border {
+        height: 24px;
+        border-right: 1px solid #000;
+        margin-right: 18px;
+      }
+
+      .westagram-logo {
+        font-size: 30px;
+        font-family: 'Lobster', cursive;
+      }
+    }
+
+    .search-box {
+      position: relative;
+
+      input {
+        width: 200px;
+        height: 28px;
+        padding: 0 12px;
+        border: 1px solid $border;
+
+        &:focus + .placeholder {
+          display: none;
+        }
+
+        &::placeholder {
+          text-align: center;
+        }
+      }
+    }
+
+    .nav-btns {
+      @include flex(row, center, center);
+
+      a {
+        margin-right: 24px;
+
+        &:last-child {
+          margin-right: 0px;
+        }
+
+        img {
+          width: 24px;
+        }
+      }
+
+      .likes {
+        position: relative;
+
+        &::after {
+          content: '';
+          position: absolute;
+          left: calc(50% - 2px);
+          bottom: -8px;
+          width: 4px;
+          height: 4px;
+          border-radius: 50%;
+          background-color: $red;
+        }
+      }
+    }
+  }
+}
