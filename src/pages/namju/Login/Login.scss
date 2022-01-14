@@ -1,0 +1,77 @@
+$bg: #fafafa;
+$border: #dbdbdb;
+$border-focus: #c7c7c7;
+$blue: #0095f6;
+$light-blue: #c4e2fe;
+$font-grey: #8e8e8e;
+$font-black: #262626;
+$red: #ed4956;
+
+@mixin flex($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+}
+
+@mixin position-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.login-viewport {
+  height: 100vh;
+  min-height: 500px;
+  position: relative;
+}
+
+.login {
+  @include flex(column);
+  @include position-center;
+  width: 350px;
+  padding: 10px 0;
+  border: 1px solid $border;
+  border-radius: 1px;
+  background-color: #fff;
+
+  .westagram-logo {
+    margin: 22px auto 36px;
+    font-size: 60px;
+  }
+
+  .login-form {
+    @include flex(column);
+    margin: 0 40px;
+
+    input {
+      height: 38px;
+      margin-bottom: 6px;
+      padding: 0 8px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    button {
+      margin-top: 8px;
+      margin-bottom: 8px;
+      height: 30px;
+      padding: 5px 9px;
+      border-radius: 4px;
+      color: #fff;
+      background-color: $blue;
+      font-weight: 600;
+
+      &:disabled {
+        opacity: 0.3;
+        cursor: default;
+      }
+    }
+  }
+
+  a {
+    margin: 52px auto 10px;
+    color: #01376a;
+    font-size: 12px;
+    font-weight: 600;
+  }
+}
