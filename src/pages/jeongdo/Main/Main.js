@@ -1,28 +1,28 @@
 import React, { useState, useRef } from 'react';
 import './Main.scss';
 import Nav from '../../../components/Nav/Nav';
+import CommentItem from './CommentItem/CommentItem';
 
 const Main = () => {
   const inputRef = useRef(null);
   const [comments, setComments] = useState([
-    { name: 'guest1', comment: '요를레히리' },
+    { name: 'guest1', comment: '요를레히리', id: Math.random() },
   ]);
-  const [comment, setComment] = useState('');
-  const [isLike, setIsLike] = useState(false);
+
+  const [commentInput, setCommentInput] = useState('');
 
   const onChange = e => {
-    setComment(e.target.value);
+    setCommentInput(e.target.value);
   };
+
   const onClick = e => {
-    setComments([...comments, { name: 'gueset1', comment: comment }]);
+    setComments([
+      ...comments,
+      { name: 'gueset1', comment: commentInput, id: Math.random() },
+    ]);
     inputRef.current.value = '';
-    inputRef.current.fucus();
+    // inputRef.current.fucus();
   };
-
-  const likeClick = e => {
-    setIsLike(!isLike);
-  };
-
   return (
     <div className="mainPage">
       <Nav />
@@ -70,23 +70,16 @@ const Main = () => {
                   </span>
 
                   <div className="post__comment__guest-Wrap">
-                    {comments.map((comment, idx) => {
-                      return (
-                        <div className="post__comment__guest" key={idx}>
-                          <div className="post__comment__guest-info">
-                            <span>{comment.name}</span>
-                            <p>{comment.comment}</p>
-                          </div>
-                          <button className="rmBack" onClick={likeClick}>
-                            {isLike ? (
-                              <i class="fas fa-heart on" />
-                            ) : (
-                              <i className="far fa-heart heart " />
-                            )}
-                          </button>
-                        </div>
-                      );
-                    })}
+                    {comments &&
+                      comments.map((comment, idx) => (
+                        <CommentItem
+                          comment={comment}
+                          id={comment.id}
+                          key={idx}
+                          setComments={setComments}
+                          comments={comments}
+                        />
+                      ))}
                   </div>
 
                   <time role="presentation" className="postTime">
