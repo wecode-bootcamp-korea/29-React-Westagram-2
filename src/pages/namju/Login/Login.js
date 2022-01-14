@@ -29,8 +29,8 @@ function Login() {
   };
 
   return (
-    <div className="login-viewport">
-      <div className="login">
+    <div className="login-namju-viewport">
+      <div className="login-namju">
         <h1 className="westagram-logo">Westagram</h1>
         <form method="post" className="login-form">
           <input
