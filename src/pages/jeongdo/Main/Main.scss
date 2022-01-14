@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&display=swap');
+
 main {
   display: flex;
   justify-content: center;
@@ -202,6 +204,14 @@ p a:hover {
   background-color: rgba(255, 255, 255, 0);
   outline: none;
   color: #b3dffc;
+  cursor: pointer;
+}
+
+.rmBack {
+  background-color: rgba(255, 255, 255, 0);
+  color: #a4a4a4;
+  border: none;
+  outline: none;
   cursor: pointer;
 }
 

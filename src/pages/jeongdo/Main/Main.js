@@ -6,8 +6,10 @@ import CommentItem from './CommentItem/CommentItem';
 const Main = () => {
   const inputRef = useRef(null);
   const [comments, setComments] = useState([
-    { name: 'guest1', comment: '요를레히리', id: Math.random() },
+    { name: 'gasd', comment: 'asdsd', id: Math.random() },
   ]);
+
+  const [feedLike, setFeedLike] = useState(false);
 
   const [commentInput, setCommentInput] = useState('');
 
@@ -15,13 +17,16 @@ const Main = () => {
     setCommentInput(e.target.value);
   };
 
-  const onClick = e => {
+  const onClickAdd = e => {
     setComments([
       ...comments,
       { name: 'gueset1', comment: commentInput, id: Math.random() },
     ]);
     inputRef.current.value = '';
-    // inputRef.current.fucus();
+    inputRef.current.focus();
+  };
+  const onClickLike = e => {
+    setFeedLike(!feedLike);
   };
   return (
     <div className="mainPage">
@@ -47,7 +52,14 @@ const Main = () => {
                 <div className="post__commentWrap">
                   <div className="post__comment">
                     <div className="post__comment__icons">
-                      <i class="fas fa-heart heart on" />
+                      {feedLike ? (
+                        <i class="fas fa-heart on" onClick={onClickLike} />
+                      ) : (
+                        <i
+                          className="far fa-heart heart "
+                          onClick={onClickLike}
+                        />
+                      )}
                       <i class="far fa-comment" />
                       <i class="fas fa-upload" />
                     </div>
@@ -97,7 +109,7 @@ const Main = () => {
                     onChange={onChange}
                     ref={inputRef}
                   />
-                  <button className="submitBtn" onClick={onClick}>
+                  <button className="submitBtn" onClick={onClickAdd}>
                     게시
                   </button>
                 </div>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Comment.scss';
 
 const CommentItem = ({ comment, comments, id, idx, setComments }) => {
   const [isLike, setIsLike] = useState(false);
@@ -15,15 +16,13 @@ const CommentItem = ({ comment, comments, id, idx, setComments }) => {
         <span>{comment.name}</span>
         <p>{comment.comment}</p>
       </div>
-      <div>
+      <div className="post__comment__guest-icon">
         <i class="far fa-trash-alt" onClick={() => handleDelete(id)} />
-        <button className="rmBack" onClick={likeClick}>
-          {isLike ? (
-            <i class="fas fa-heart on" />
-          ) : (
-            <i className="far fa-heart heart " />
-          )}
-        </button>
+        {isLike ? (
+          <i class="fas fa-heart on" onClick={likeClick} />
+        ) : (
+          <i className="far fa-heart heart " onClick={likeClick} />
+        )}
       </div>
     </div>
   );
