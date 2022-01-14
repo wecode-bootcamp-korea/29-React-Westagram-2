@@ -15,7 +15,7 @@ const FeedComment = props => {
 
   return (
     showResults && (
-      <div className="feed-comment">
+      <div className="feed-comment-namju">
         <div className="feed-comment-wrap">
           <div className="comment">
             <strong>{props.name}</strong>

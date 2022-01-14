@@ -31,7 +31,7 @@ const FeedCard = props => {
   }
 
   return (
-    <article className="feed-card" id="feedCard">
+    <article className="feed-card-namju" id="feedCard">
       <div className="feed-header">
         <a href="/main" className="feed-header-left">
           <div className="profile-pic-wrap">
