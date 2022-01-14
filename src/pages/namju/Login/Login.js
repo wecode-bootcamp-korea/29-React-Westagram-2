@@ -25,7 +25,7 @@ function Login() {
   const goToMain = () => {
     window.localStorage.setItem('userName', JSON.stringify(accountData));
     window.localStorage.setItem('userPassword', JSON.stringify(passwordData));
-    navigate('/main');
+    navigate('/main-namju');
   };
 
   return (
