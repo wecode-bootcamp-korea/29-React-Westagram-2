@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "../../styles/common.scss";
-import "./Login.scss";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import '../../../common.scss';
+import './Login.scss';
 
 function Login() {
   const [accountValid, setAccountValid] = useState(false);
@@ -10,12 +10,12 @@ function Login() {
   const [accountData, setAccountData] = useState();
   const [passwordData, setPasswordData] = useState();
 
-  const handleAccountChange = (e) => {
-    setAccountValid(e.target.value.includes("@"));
+  const handleAccountChange = e => {
+    setAccountValid(e.target.value.includes('@'));
     setAccountData(e.target.value);
   };
 
-  const handlePasswordChange = (e) => {
+  const handlePasswordChange = e => {
     setPasswordValid(e.target.value.length >= 5);
     setPasswordData(e.target.value);
   };
@@ -23,9 +23,9 @@ function Login() {
   const navigate = useNavigate();
 
   const goToMain = () => {
-    window.localStorage.setItem("userName", JSON.stringify(accountData));
-    window.localStorage.setItem("userPassword", JSON.stringify(passwordData));
-    navigate("/main");
+    window.localStorage.setItem('userName', JSON.stringify(accountData));
+    window.localStorage.setItem('userPassword', JSON.stringify(passwordData));
+    navigate('/main');
   };
 
   return (
@@ -37,15 +37,15 @@ function Login() {
             id="inputAccount"
             type="text"
             placeholder="전화번호, 사용자 이름 또는 이메일"
-            onChange={(e) => handleAccountChange(e)}
-            onKeyUp={(e) => (e.key === "Enter" ? goToMain() : null)}
+            onChange={e => handleAccountChange(e)}
+            onKeyUp={e => (e.key === 'Enter' ? goToMain() : null)}
           />
           <input
             id="inputPassword"
             type="password"
             placeholder="비밀번호"
-            onChange={(e) => handlePasswordChange(e)}
-            onKeyUp={(e) => (e.key === "Enter" ? goToMain() : null)}
+            onChange={e => handlePasswordChange(e)}
+            onKeyUp={e => (e.key === 'Enter' ? goToMain() : null)}
           />
           <button
             id="btnLogin"
