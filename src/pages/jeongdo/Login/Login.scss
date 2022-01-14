@@ -1,31 +1,31 @@
-.container {
-  width: 100vw;
-  height: 100vh;
+@mixin center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.container {
+  width: 100vw;
+  height: 100vh;
+  @include center;
+}
+
 .loginLayout {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include center;
   width: 350px;
   flex-direction: column;
   border: 1px solid #e6e6e6;
   background-color: #ffffff;
   padding: 10px 0;
-}
-
-.loginLayout h1 {
-  font-family: Lobster;
-  margin: 22px auto 12px;
+  h1 {
+    font-size: 30px;
+    font-family: Lobster;
+    margin: 22px auto 12px;
+  }
 }
 
 .inputInfo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include center;
   flex-direction: column;
 }
 

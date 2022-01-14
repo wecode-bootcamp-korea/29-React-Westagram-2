@@ -17,7 +17,7 @@ const Login = () => {
   const { id, password } = inputs;
 
   const handleCheck = e => {
-    if (!regEmail.test(e.target.value)) {
+    if (!regEmail.test(inputs.id)) {
       idValidation.current.style.borderColor = '#e23636';
     } else {
       idValidation.current.style.borderColor = '#e6e6e6';
@@ -30,17 +30,18 @@ const Login = () => {
 
   const clickHandler = e => {
     if ((loginBtnColor.current.style.backgroundColor = '#0095f6')) {
-      navigate('/main');
+      navigate('/main-jeongdo');
     }
   };
 
   const handleKeyUp = e => {
-    if (inputs.id && inputs.pwd) {
+    if (regEmail.test(inputs.id) && inputs.pwd.length > 4) {
       loginBtnColor.current.style.backgroundColor = '#0095f6';
     } else {
       loginBtnColor.current.style.backgroundColor = '#c4e1fb';
     }
   };
+
   return (
     <div className="container">
       <div className="loginLayout">
