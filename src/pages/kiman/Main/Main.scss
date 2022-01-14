@@ -1,0 +1,158 @@
+@mixin flex-center {
+  display: flex;
+  justify-content: space-between;
+}
+
+@mixin others-img-size {
+  width: 40px;
+  height: 40px;
+}
+
+#main {
+  @include flex-center;
+  background-color: #fafafa;
+  width: 70%;
+  margin: auto;
+
+  #mainfeedbox {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #mainright {
+    width: 30%;
+
+    #rightdetail {
+      margin: 10px;
+
+      .myinf {
+        display: flex;
+        margin-bottom: 15px;
+
+        img {
+          @include others-img-size;
+          border-radius: 50%;
+        }
+
+        .myname {
+          margin-left: 10px;
+          margin-top: auto;
+          margin-bottom: auto;
+          font-size: 10px;
+
+          .mysubname {
+            color: gray;
+          }
+        }
+      }
+    }
+    .story {
+      border: 1px solid #f2f2f2;
+      background-color: white;
+      height: 150px;
+      overflow: scroll;
+
+      .storytitle {
+        @include flex-center;
+        height: 35px;
+        align-items: center;
+        font-size: 10px;
+        margin: 0px 10px;
+        font-weight: bolder;
+
+        .stotyleft {
+          color: gray;
+        }
+      }
+
+      .storycontent {
+        display: flex;
+        margin: 5px 10px;
+
+        img {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+        }
+
+        .storywriters {
+          margin-left: 10px;
+          margin-top: auto;
+          margin-bottom: auto;
+          font-size: 10px;
+
+          .storytimelog {
+            color: gray;
+          }
+        }
+      }
+    }
+
+    .push {
+      margin-top: 10px;
+      border: 1px solid #f2f2f2;
+      background-color: white;
+
+      .pushtitle {
+        @include flex-center;
+        height: 35px;
+        align-items: center;
+        font-size: 10px;
+        margin: 0px 10px;
+        font-weight: bolder;
+
+        .pushleft {
+          color: gray;
+        }
+      }
+
+      .pushcontent {
+        display: flex;
+        justify-content: space-between;
+        margin: 5px 10px;
+        align-items: center;
+
+        .pushinf {
+          @include flex-center();
+
+          img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+          }
+
+          .pushwriters {
+            margin-left: 10px;
+            margin-top: auto;
+            margin-bottom: auto;
+            font-size: 10px;
+
+            .pushothers {
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 1;
+              overflow: hidden;
+              color: gray;
+            }
+          }
+        }
+        .pushfollow {
+          font-size: 10px;
+          color: rgba(0, 149, 246);
+          padding-left: 10px;
+          width: 50px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 950px) {
+  #mainright {
+    display: none;
+  }
+
+  #mainfeedbox {
+    width: 100%;
+  }
+}
