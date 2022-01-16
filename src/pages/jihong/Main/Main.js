@@ -2,25 +2,20 @@ import React from 'react';
 import { useState } from 'react';
 import Mainright from './Right/Mainright';
 import './Main.scss';
+import CommentItem from './Feed/CommentItem';
 
 const Main = () => {
-  const [text, setText] = useState('');
-  const [texts, setTexts] = useState([]);
-
-  const onChange = event => setText(event.target.value);
+  const [commentInput, setCommentInput] = useState('');
+  const [comments, setComments] = useState([]);
+  const onChange = event => setCommentInput(event.target.value);
 
   const onSubmit = event => {
     event.preventDefault();
-    if (text === '') {
+    if (commentInput === '') {
       return;
     }
-    setText('');
-    setTexts(currentArray => [text, ...currentArray]);
-  };
-
-  const [isLike, setIsLike] = useState(false);
-  const isLikeClick = e => {
-    setIsLike(!isLike);
+    setCommentInput('');
+    setComments([...comments, { comment: commentInput, id: Math.random() }]);
   };
 
   return (
@@ -86,18 +81,14 @@ const Main = () => {
           </div>
           <div className="userComment">
             <div className="comment">
-              {texts.map((item, index) => (
-                <li key={index}>
-                  <span>whoohawhooha</span>
-                  {item}
-                  <button onClick={isLikeClick}>
-                    {isLike ? (
-                      <i className="fas fa-heart" />
-                    ) : (
-                      <i className="far fa-heart" />
-                    )}
-                  </button>
-                </li>
+              {comments.map((comment, index) => (
+                <CommentItem
+                  comment={comment}
+                  key={index}
+                  id={comment.id}
+                  setComments={setComments}
+                  comments={comments}
+                />
               ))}
             </div>
           </div>
@@ -111,7 +102,7 @@ const Main = () => {
               <input
                 className="inputComment"
                 onChange={onChange}
-                value={text}
+                value={commentInput}
                 type="text"
                 placeholder="댓글 달기..."
               />
