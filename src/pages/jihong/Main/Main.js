@@ -7,6 +7,12 @@ import CommentItem from './Feed/CommentItem';
 const Main = () => {
   const [commentInput, setCommentInput] = useState('');
   const [comments, setComments] = useState([]);
+
+  const [isLike, setIsLike] = useState(false);
+  const isLikeClick = () => {
+    setIsLike(!isLike);
+  };
+
   const onChange = event => setCommentInput(event.target.value);
 
   const onSubmit = event => {
@@ -57,7 +63,13 @@ const Main = () => {
           </div>
 
           <div className="feedEmoticon">
-            <i className="fas fa-heart" />
+            <button className="LikeEmoticon" onClick={isLikeClick}>
+              {isLike ? (
+                <i className="fas fa-heart" />
+              ) : (
+                <i className="far fa-heart" />
+              )}
+            </button>
             <i className="far fa-comment" />
             <i className="far fa-paper-plane" />
             <i className="far fa-bookmark" />

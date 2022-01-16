@@ -175,11 +175,17 @@ body {
       display: flex;
       align-items: center;
 
+      .LikeEmoticon {
+        position: absolute;
+        left: 15px;
+        border: 0;
+        background-color: white;
+        cursor: pointer;
+      }
+
       .fa-heart {
         color: rgb(252, 87, 87);
         font-size: 24px;
-        position: absolute;
-        left: 15px;
       }
 
       .fa-comment {
