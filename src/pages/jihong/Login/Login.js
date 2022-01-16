@@ -78,7 +78,7 @@ const Login = () => {
 
         <div className="formLinkBtn">
           <a href="https://google.com/">
-            <i className="fab fa-facebook-square"></i>
+            <i className="fab fa-facebook-square" />
           </a>
           <a className="linkBtn1" href="https://www.facebook.com/">
             Log in with Facebook
