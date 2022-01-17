@@ -23,8 +23,8 @@ function Login() {
   const navigate = useNavigate();
 
   const goToMain = () => {
-    window.localStorage.setItem('userName', JSON.stringify(accountData));
-    window.localStorage.setItem('userPassword', JSON.stringify(passwordData));
+    window.localStorage.setItem('userName', accountData);
+    window.localStorage.setItem('userPassword', passwordData);
     navigate('/main-namju');
   };
 
