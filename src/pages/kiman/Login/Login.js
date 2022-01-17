@@ -18,7 +18,7 @@ const Login = () => {
     if (userId.indexOf('@') > -1 && userPw.length >= 5) {
       navigate('/main-kiman');
     } else {
-      alert('확인점요');
+      alert('아이디 및 비밀번호를 확인해주세요');
     }
   };
 

@@ -12,11 +12,16 @@ const MainFeed = () => {
   const onChange = e => setuserComment(e.target.value);
 
   const onClick = e => {
-    setuserComments([
-      ...userComments,
-      { name: 'test1', comment: userComment, id: Math.random() },
-    ]);
-    inputRef.current.value = '';
+    if (inputRef.current.value !== '') {
+      setuserComments([
+        ...userComments,
+        { name: 'test1', comment: userComment, id: Math.random() },
+      ]);
+      inputRef.current.value = null;
+      setuserComment('');
+    } else {
+      alert('댓글을 입력해주세요');
+    }
   };
 
   const onKeyupEnter = e => {
