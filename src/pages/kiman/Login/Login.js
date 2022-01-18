@@ -1,6 +1,4 @@
 import './Login.scss';
-import '../../../reset.scss';
-import '../../../common.scss';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -8,14 +6,20 @@ import { Link } from 'react-router-dom';
 const Login = () => {
   const navigate = useNavigate();
 
-  const [userId, setUserId] = useState('');
-  const [userPw, setUserPw] = useState('');
+  const [inputValues, setInputValues] = useState({
+    id: '',
+    password: '',
+  });
 
-  const onInputUserId = e => setUserId(e.target.value);
-  const onInputUserPw = e => setUserPw(e.target.value);
-
+  const handleInput = e => {
+    const { name, value } = e.target;
+    setInputValues({
+      ...inputValues,
+      [name]: value,
+    });
+  };
   const goToMain = () => {
-    if (userId.indexOf('@') > -1 && userPw.length >= 5) {
+    if (inputValues.id.indexOf('@') > -1 && inputValues.password.length >= 5) {
       navigate('/main-kiman');
     } else {
       alert('아이디 및 비밀번호를 확인해주세요');
@@ -34,17 +38,17 @@ const Login = () => {
         <div id="inputbox">
           <input
             id="loginid"
+            name="id"
             type="text"
             placeholder="전화번호, 사용자 이름 또는 이메일"
-            value={userId}
-            onInput={onInputUserId}
+            onInput={handleInput}
           />
           <input
             id="loginpw"
+            name="password"
             type="password"
             placeholder="비밀번호"
-            value={userPw}
-            onInput={onInputUserPw}
+            onInput={handleInput}
             onKeyUp={onKeyUp}
           />
         </div>
@@ -54,7 +58,9 @@ const Login = () => {
             onClick={goToMain}
             style={{
               opacity:
-                userId.length >= 1 && userPw.length >= 1 ? '100%' : '30%',
+                inputValues.id.length >= 1 && inputValues.password.length >= 1
+                  ? '100%'
+                  : '30%',
             }}
           >
             로그인

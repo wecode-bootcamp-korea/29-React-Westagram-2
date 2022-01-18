@@ -1,7 +1,12 @@
 import React from 'react';
-import CommentLike from './CommentLike';
+import { useState } from 'react';
 
 const AddComment = ({ userComments, setuserComments, com }) => {
+  const [isLike, setisLike] = useState(com.isLike);
+  const likeClick = () => {
+    setisLike(isLike => !isLike);
+  };
+
   const onClickDelte = id => {
     setuserComments(userComments.filter(usercomment => usercomment.id !== id));
   };
@@ -16,7 +21,10 @@ const AddComment = ({ userComments, setuserComments, com }) => {
             X
           </button>
         </div>
-        <CommentLike />
+        <i
+          onClick={likeClick}
+          className={isLike ? 'fas fa-heart clicked' : 'fas fa-heart'}
+        />
       </div>
     </li>
   );

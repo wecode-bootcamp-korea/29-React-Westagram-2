@@ -7,7 +7,6 @@
   width: 40px;
   height: 40px;
 }
-
 #main {
   @include flex-center;
   background-color: #fafafa;
@@ -17,10 +16,12 @@
   #mainfeedbox {
     display: flex;
     flex-direction: column;
+    margin-top: 60px;
   }
 
   #mainright {
     width: 30%;
+    margin-top: 60px;
 
     #rightdetail {
       margin: 10px;

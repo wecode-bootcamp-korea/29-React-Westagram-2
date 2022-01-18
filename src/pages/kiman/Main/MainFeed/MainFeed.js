@@ -2,11 +2,11 @@ import React, { useState, useRef } from 'react';
 import AddComment from './CommentFunction/AddComment';
 import './MainFeed.scss';
 
-const MainFeed = () => {
+const MainFeed = ({ mockdata }) => {
   const inputRef = useRef();
-  const [userComments, setuserComments] = useState([
-    { name: 'test', comment: 'tester1', id: Math.random() },
-  ]);
+  const [userComments, setuserComments] = useState(mockdata);
+  // { name: "test", comment: "tester1", id: Math.random() },
+
   const [userComment, setuserComment] = useState('');
 
   const onChange = e => setuserComment(e.target.value);
@@ -15,7 +15,12 @@ const MainFeed = () => {
     if (inputRef.current.value !== '') {
       setuserComments([
         ...userComments,
-        { name: 'test1', comment: userComment, id: Math.random() },
+        {
+          name: 'test1',
+          comment: userComment,
+          id: Math.random(),
+          isLike: false,
+        },
       ]);
       inputRef.current.value = null;
       setuserComment('');
@@ -64,26 +69,27 @@ const MainFeed = () => {
           <div className="like" />
           <div className="comment">
             <ul>
-              {userComments.map((com, idx) => {
-                return (
-                  <AddComment
-                    userComments={userComments}
-                    setuserComments={setuserComments}
-                    com={com}
-                    key={idx}
-                  />
-                  // <li key={idx} id={id}>
-                  //   <div className="userwriteall">
-                  //     <div className="userwrite">
-                  //       <div className="userid">{com.name}</div>
-                  //       <div className="usercommnet">{com.comment}</div>
-                  //       <button className="hidden">X</button>
-                  //     </div>
-                  //     <CommentLike />
-                  //   </div>
-                  // </li>
-                );
-              })}
+              {userComments &&
+                userComments.map((com, idx) => {
+                  return (
+                    <AddComment
+                      userComments={userComments}
+                      setuserComments={setuserComments}
+                      com={com}
+                      key={idx}
+                    />
+                    // <li key={idx} id={id}>
+                    //   <div className="userwriteall">
+                    //     <div className="userwrite">
+                    //       <div className="userid">{com.name}</div>
+                    //       <div className="usercommnet">{com.comment}</div>
+                    //       <button className="hidden">X</button>
+                    //     </div>
+                    //     <CommentLike />
+                    //   </div>
+                    // </li>
+                  );
+                })}
             </ul>
           </div>
           <div className="commentinputbox">
