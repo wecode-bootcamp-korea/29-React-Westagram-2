@@ -74,7 +74,7 @@ const FeedCard = props => {
           <button
             type="button"
             className="btn-like"
-            onClick={() => props.likeFeed(props.index)}
+            onClick={() => props.handleLikeFeed(props.index)}
           >
             <img
               alt="like feed"
@@ -127,7 +127,7 @@ const FeedCard = props => {
         <FeedComment
           name={comment.userName}
           content={comment.content}
-          key={comment.id}
+          key={index}
           index={index}
           isLiked={comment.isLiked}
           deleteComment={deleteComment}

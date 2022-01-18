@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import './Main.scss';
 import Nav from '../../../components/Nav/Nav';
 import FeedCard from './FeedCard/FeedCard';
+import { STORY_ITEM_LIST, REC_ITEM_LIST, TERMS_LIST } from './main-namju-lists';
+import './Main.scss';
 
 function Main() {
   const [feedList, setFeedList] = useState([]);
@@ -16,7 +17,7 @@ function Main() {
       });
   }, []);
 
-  const likeFeed = feedIndex => {
+  const handleLikeFeed = feedIndex => {
     let newArr = [...feedList];
     newArr[feedIndex].isLiked = newArr[feedIndex].isLiked ? false : true;
     newArr[feedIndex].isLiked
@@ -24,66 +25,6 @@ function Main() {
       : newArr[feedIndex].numOfLikes--;
     setFeedList(newArr);
   };
-
-  const STORY_ITEM_LIST = [
-    {
-      userName: 'dassboss',
-      time: '10분전',
-      profilePic: '/images/namju/like-info-img.jpeg',
-    },
-    {
-      userName: 'tiagocanario',
-      time: '12분전',
-      profilePic: '/images/namju/profile-img-2.jpeg',
-    },
-    {
-      userName: 'naejusikmangham',
-      time: '23분전',
-      profilePic: '/images/namju/profile-img-3.jpeg',
-    },
-    {
-      userName: 'werkjqw',
-      time: '30분전',
-      profilePic: '/images/namju/profile-img-default.jpeg',
-    },
-  ];
-
-  const REC_ITEM_LIST = [
-    {
-      userName: 'dassboss',
-      desc: 'akwjerb님 외 4명이 팔로우 중입니다',
-      profilePic: '/images/namju/like-info-img.jpeg',
-    },
-    {
-      userName: 'dassboss',
-      desc: 'akwjerb님 외 4명이 팔로우 중입니다',
-      profilePic: '/images/namju/like-info-img.jpeg',
-    },
-    {
-      userName: 'dassboss',
-      desc: 'akwjerb님 외 4명이 팔로우 중입니다',
-      profilePic: '/images/namju/like-info-img.jpeg',
-    },
-    {
-      userName: 'dassboss',
-      desc: 'akwjerb님 외 4명이 팔로우 중입니다',
-      profilePic: '/images/namju/like-info-img.jpeg',
-    },
-  ];
-
-  const TERMS_LIST = [
-    'Instagram 정보',
-    '지원',
-    '홍보 센터',
-    'API',
-    '채용 정보',
-    '개인정보처리방침',
-    '약관',
-    '디렉터리',
-    '프로필',
-    '해시태그',
-    '언어',
-  ];
 
   return (
     <div className="main-namju-container">
@@ -102,7 +43,7 @@ function Main() {
               caption={feed.caption}
               isLiked={feed.isLiked}
               time={feed.time}
-              likeFeed={likeFeed}
+              handleLikeFeed={handleLikeFeed}
               commentList={feed.commentList}
             />
           ))}
@@ -162,8 +103,8 @@ function Main() {
             </div>
 
             <ul className="rec-list">
-              {REC_ITEM_LIST.map(item => (
-                <li className="rec-item">
+              {REC_ITEM_LIST.map((item, index) => (
+                <li className="rec-item" key={index}>
                   <a href="#" className="rec-profile">
                     <div className="rec-img-wrap">
                       <img src={item.profilePic} alt="" />
@@ -182,7 +123,9 @@ function Main() {
           <section className="terms">
             <div className="terms-link">
               {TERMS_LIST.map(item => (
-                <a href="">{item}</a>
+                <a href="" key={item}>
+                  {item}
+                </a>
               ))}
             </div>
             <div className="copyright">© 2019 INSTAGRAM</div>
