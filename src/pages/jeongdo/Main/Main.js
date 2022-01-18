@@ -1,120 +1,37 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Main.scss';
 import Nav from '../../../components/Nav/Nav';
-import CommentItem from './CommentItem/CommentItem';
+
+import Feed from './Feed/Feed';
 
 const Main = () => {
-  const inputRef = useRef(null);
-  const [comments, setComments] = useState([
-    { name: 'gasd', comment: 'asdsd', id: Math.random() },
-  ]);
+  const [feeds, setFeeds] = useState([]);
+  // const [comments, setComments] = useState([]);
+  // const [data, setData] = useState([]);
 
-  const [feedLike, setFeedLike] = useState(false);
+  useEffect(() => {
+    fetch('http://localhost:3000/data/commentData.json')
+      .then(res => res.json())
+      .then(data => {
+        setFeeds(data);
+        // setComments(data);
+        // setData(data);
+      });
+  }, []);
 
-  const [commentInput, setCommentInput] = useState('');
-
-  const onChange = e => {
-    setCommentInput(e.target.value);
-  };
-
-  const onClickAdd = e => {
-    setComments([
-      ...comments,
-      { name: 'gueset1', comment: commentInput, id: Math.random() },
-    ]);
-    inputRef.current.value = '';
-    inputRef.current.focus();
-  };
-  const onClickLike = e => {
-    setFeedLike(!feedLike);
-  };
+  console.log(feeds);
   return (
     <div className="mainPage">
       <Nav />
       <main>
         <div className="feeds">
           <div className="feedWrap">
-            <article>
-              <div className="post">
-                <div className="post__header">
-                  <div className="post__header__profile">
-                    <img
-                      src="/images/jeongdo/europe.jpg"
-                      alt="europe_jeongdo"
-                    />
-                    <a href="/#">Seokkitdo</a>
-                  </div>
-                  <i className="fas fa-ellipsis-h" />
-                </div>
-                <div className="post__content">
-                  <img src="/images/jeongdo/europe.jpg" alt="europe_jeongdo" />
-                </div>
-                <div className="post__commentWrap">
-                  <div className="post__comment">
-                    <div className="post__comment__icons">
-                      {feedLike ? (
-                        <i class="fas fa-heart on" onClick={onClickLike} />
-                      ) : (
-                        <i
-                          className="far fa-heart heart "
-                          onClick={onClickLike}
-                        />
-                      )}
-                      <i class="far fa-comment" />
-                      <i class="fas fa-upload" />
-                    </div>
-                    <i className="far fa-bookmark" />
-                  </div>
-
-                  <div className="post__comment__writer">
-                    <img src="images/jeongdo/europe.jpg" alt="europe_jeongdo" />
-                    <span>
-                      <a href="/#">somebody</a>님 외 <span>10명</span>이
-                      좋아합니다
-                    </span>
-                  </div>
-                  <span className="post__myComment">
-                    <a href="/#">Seokkitdo</a>
-                    <span>
-                      위코드에서 공부중...&nbsp;
-                      <button className="rmBack">더보기</button>
-                    </span>
-                  </span>
-
-                  <div className="post__comment__guest-Wrap">
-                    {comments &&
-                      comments.map((comment, idx) => (
-                        <CommentItem
-                          comment={comment}
-                          id={comment.id}
-                          key={idx}
-                          setComments={setComments}
-                          comments={comments}
-                        />
-                      ))}
-                  </div>
-
-                  <time role="presentation" className="postTime">
-                    21시간전
-                  </time>
-                </div>
-
-                <div className="post__addComment">
-                  <i className="far fa-smile" />
-                  <textarea
-                    type="text"
-                    placeholder="댓글 달기..."
-                    className="commentInput"
-                    required
-                    onChange={onChange}
-                    ref={inputRef}
-                  />
-                  <button className="submitBtn" onClick={onClickAdd}>
-                    게시
-                  </button>
-                </div>
-              </div>
-            </article>
+            {feeds.map((feed, idx) => (
+              <Feed feed={feed} key={idx} feedComments={feed.comment} />
+            ))}
+            {/* {[...Array(data.length)].map((item, i) => (
+              <Feed comments={comments} setComments={setComments} key={i} />
+            ))} */}
           </div>
           <aside>
             <div className="aside__profile">
@@ -126,6 +43,7 @@ const Main = () => {
             </div>
 
             <div className="aside__story">
+              {' '}
               <div className="aside__story-title">
                 <p>스토리</p>
                 <p>모두 보기</p>
@@ -143,7 +61,6 @@ const Main = () => {
                   </div>
                 </div>
               </div>
-
               <div className="aside__story-profileWrap">
                 <div className="aside__story-profile">
                   <div className="aside__story-profile__circle">
@@ -157,7 +74,6 @@ const Main = () => {
                   </div>
                 </div>
               </div>
-
               <div className="aside__story-profileWrap">
                 <div className="aside__story-profile">
                   <div className="aside__story-profile__circle">
@@ -174,7 +90,6 @@ const Main = () => {
                   </div>
                 </div>
               </div>
-
               <div className="aside__story-profileWrap">
                 <div className="aside__story-profile">
                   <div className="aside__story-profile__circle">
@@ -188,7 +103,6 @@ const Main = () => {
                   </div>
                 </div>
               </div>
-
               <div className="aside__story-profileWrap">
                 <div className="aside__story-profile">
                   <div className="aside__story-profile__circle">
@@ -202,7 +116,6 @@ const Main = () => {
                   </div>
                 </div>
               </div>
-
               <div className="aside__story-profileWrap">
                 <div className="aside__story-profile">
                   <div className="aside__story-profile__circle">
@@ -216,7 +129,6 @@ const Main = () => {
                   </div>
                 </div>
               </div>
-
               <div className="aside__story-profileWrap">
                 <div className="aside__story-profile">
                   <div className="aside__story-profile__circle">
