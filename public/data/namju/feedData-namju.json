@@ -1,0 +1,126 @@
+[
+  {
+    "id": 1,
+    "userName": "peanutbutterfesta",
+    "profileSrc": "images/namju/profile-img.jpeg",
+    "feedSrc": "/images/namju/feed-img.jpeg",
+    "commentDataUrl": "http://localhost:3000/data/namju/commentData-namju-1.json",
+    "numOfLikes": 42,
+    "caption": "새해 복 많이 받으세요!",
+    "isLiked": false,
+    "time": "42분",
+    "commentList": [
+      {
+        "id": 1,
+        "userName": "namju",
+        "content": "집에 가구싶다...🏠",
+        "isLiked": false
+      },
+      {
+        "id": 2,
+        "userName": "yunNamju",
+        "content": "사진 잘 보고 갑니당 😇",
+        "isLiked": false
+      },
+      {
+        "id": 3,
+        "userName": "NamjuYun",
+        "content": "새해 복 많이 받아라 ㅎㅎㅎ",
+        "isLiked": true
+      },
+      {
+        "id": 4,
+        "userName": "jujusnake",
+        "content": "굿굿굿~~~",
+        "isLiked": false
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "userName": "tiagocanario",
+    "profileSrc": "images/namju/profile-img-2.jpeg",
+    "feedSrc": "/images/namju/feed-img-2.jpeg",
+    "commentDataUrl": "http://localhost:3000/data/namju/commentData-namju-2.json",
+    "numOfLikes": 98,
+    "caption": "꽃이랑 🌸",
+    "isLiked": true,
+    "time": "1시간",
+    "commentList": [
+      {
+        "id": 1,
+        "userName": "namju",
+        "content": "어디야? 예쁘다!",
+        "isLiked": true
+      },
+      {
+        "id": 2,
+        "userName": "yunNamju",
+        "content": "사진이 너무 멋있게요 좋아요 꾸욱 누르고 갑니다~ 제 인스타도 놀러오세요!",
+        "isLiked": false
+      },
+      {
+        "id": 3,
+        "userName": "NamjuYun",
+        "content": "👍👍👍👍👍👍👍👍👍",
+        "isLiked": false
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "userName": "naejusikmangham",
+    "profileSrc": "images/namju/profile-img-3.jpeg",
+    "feedSrc": "/images/namju/feed-img-3.jpeg",
+    "commentDataUrl": "http://localhost:3000/data/namju/commentData-namju-3.json",
+    "numOfLikes": 14,
+    "caption": "느긋했던 여행 🥬",
+    "isLiked": false,
+    "time": "2시간",
+    "commentList": [
+      {
+        "id": 1,
+        "userName": "aaaa",
+        "content": "마음이 평화로워지네요...",
+        "isLiked": false
+      },
+      {
+        "id": 2,
+        "userName": "bbbbbbb",
+        "content": "저도 등산가고 싶어요!",
+        "isLiked": false
+      },
+      {
+        "id": 3,
+        "userName": "cc",
+        "content": "행복이 최고지! 👍",
+        "isLiked": false
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "userName": "effypark",
+    "profileSrc": "https://effypark.github.io/intro/1.jpeg",
+    "feedSrc": "https://effypark.github.io/intro/2.jpeg",
+    "commentDataUrl": "http://localhost:3000/data/namju/commentData-namju-4.json",
+    "numOfLikes": 100,
+    "caption": "나는 effypark",
+    "isLiked": false,
+    "time": "3시간",
+    "commentList": [
+      {
+        "id": 1,
+        "userName": "hyelin",
+        "content": "화이팅~",
+        "isLiked": false
+      },
+      {
+        "id": 2,
+        "userName": "parkhyelin",
+        "content": "아자아자!",
+        "isLiked": false
+      }
+    ]
+  }
+]

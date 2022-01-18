@@ -1,34 +1,54 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './FeedCard.scss';
 import FeedComment from './FeedComment/FeedComment';
 
-// let textArr = [];
-
 const FeedCard = props => {
   const [textareaValue, setTextareaValue] = useState('');
-  const [textArr, setTextArr] = useState([]);
+  const [commentList, setCommentList] = useState([]);
 
-  const [srcHeart, setSrcHeart] = useState(false);
+  useEffect(() => {
+    setCommentList(props.commentList);
+  }, []);
 
-  function handleChange(e) {
+  const handleChange = e => {
     setTextareaValue(e.target.value);
-  }
+  };
 
-  function handleClick() {
-    if (textareaValue) {
-      setTextArr([...textArr, textareaValue]);
-      setTextareaValue('');
-    }
-  }
-
-  function toggleHeart() {
-    setSrcHeart(!srcHeart);
-  }
-
-  function handleEnterPress(e) {
+  const handleEnterPress = e => {
     e.preventDefault();
     handleClick();
-  }
+  };
+
+  const loggedInEmail = localStorage.getItem('userName');
+  const loggedInUserName = loggedInEmail.slice(0, loggedInEmail.indexOf('@'));
+
+  const handleClick = () => {
+    if (textareaValue) {
+      setCommentList(prevArr => [
+        ...prevArr,
+        {
+          id: prevArr.length + 1,
+          userName: loggedInUserName,
+          content: textareaValue,
+          isLiked: false,
+        },
+      ]);
+
+      setTextareaValue('');
+    }
+  };
+
+  const deleteComment = commentIndex => {
+    setCommentList(prev =>
+      prev.filter((item, index) => index !== commentIndex)
+    );
+  };
+
+  const likeComment = commentIndex => {
+    let newArr = [...commentList];
+    newArr[commentIndex].isLiked = newArr[commentIndex].isLiked ? false : true;
+    setCommentList(newArr);
+  };
 
   return (
     <article className="feed-card-namju" id="feedCard">
@@ -42,7 +62,7 @@ const FeedCard = props => {
               alt="profile picture"
             />
           </div>
-          <strong className="user-name">{props.name}</strong>
+          <strong className="user-name">{props.userName}</strong>
         </a>
         <button type="button">
           <img alt="More options" src="/images/namju/icon-elipsis.svg" />
@@ -51,15 +71,18 @@ const FeedCard = props => {
       <img src={props.feedSrc} alt="feed" className="feed-img" />
       <div className="feed-btns">
         <div className="feed-btns-left">
-          <button type="button" className="btn-like">
+          <button
+            type="button"
+            className="btn-like"
+            onClick={() => props.likeFeed(props.index)}
+          >
             <img
               alt="like feed"
               src={
-                srcHeart
+                props.isLiked
                   ? '/images/namju/heart-filled.svg'
                   : '/images/namju/heart-empty.svg'
               }
-              onClick={toggleHeart}
             />
           </button>
           <button type="button" className="btn-comment">
@@ -86,21 +109,30 @@ const FeedCard = props => {
         </div>
         <span>
           <a href="/main">dassboss</a>님
-          <a href="/main">외 {props.likes - 1}명</a>이 좋아합니다
+          {props.numOfLikes >= 2 && (
+            <a href="/main"> 외 {props.numOfLikes - 1}명</a>
+          )}
+          이 좋아합니다
         </span>
       </div>
       <div className="feed-content">
-        <strong>{props.name}</strong>
+        <strong>{props.userName}</strong>
         <span>{props.caption}</span>
-        <span className="short">...</span>
         <button className="btn-more" type="button">
           더 보기
         </button>
       </div>
 
-      {/* 댓글 들어오는 영역 */}
-      {textArr.map((e, index) => (
-        <FeedComment name="unknown" content={e} key={index} />
+      {commentList.map((comment, index) => (
+        <FeedComment
+          name={comment.userName}
+          content={comment.content}
+          key={comment.id}
+          index={index}
+          isLiked={comment.isLiked}
+          deleteComment={deleteComment}
+          likeComment={likeComment}
+        />
       ))}
 
       <aside className="feed-time">{props.time} 전</aside>

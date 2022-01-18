@@ -1,11 +1,10 @@
-@import '../../../../../common.scss';
 @import '../../../../../variables.scss';
 
 .feed-comment-namju {
   padding: 0 16px;
   margin-bottom: 4px;
 
-  &-wrap {
+  .feed-comment-wrap {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -36,7 +35,7 @@
           img {
             box-sizing: content-box;
             width: 14px;
-            padding: 1px 6px;
+            padding: 1px 3px;
           }
         }
 
@@ -44,7 +43,9 @@
           display: none;
 
           img {
+            box-sizing: content-box;
             width: 15px;
+            padding: 0 3px;
           }
         }
       }

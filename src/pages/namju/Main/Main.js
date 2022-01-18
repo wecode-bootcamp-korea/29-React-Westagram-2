@@ -1,40 +1,111 @@
-import '../../../common.scss';
+import React, { useState, useEffect } from 'react';
 import './Main.scss';
 import Nav from '../../../components/Nav/Nav';
 import FeedCard from './FeedCard/FeedCard';
 
 function Main() {
+  const [feedList, setFeedList] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:3000/data/namju/feedData-namju.json', {
+      method: 'GET',
+    })
+      .then(res => res.json())
+      .then(data => {
+        setFeedList(data);
+      });
+  }, []);
+
+  const likeFeed = feedIndex => {
+    let newArr = [...feedList];
+    newArr[feedIndex].isLiked = newArr[feedIndex].isLiked ? false : true;
+    newArr[feedIndex].isLiked
+      ? newArr[feedIndex].numOfLikes++
+      : newArr[feedIndex].numOfLikes--;
+    setFeedList(newArr);
+  };
+
+  const STORY_ITEM_LIST = [
+    {
+      userName: 'dassboss',
+      time: '10분전',
+      profilePic: '/images/namju/like-info-img.jpeg',
+    },
+    {
+      userName: 'tiagocanario',
+      time: '12분전',
+      profilePic: '/images/namju/profile-img-2.jpeg',
+    },
+    {
+      userName: 'naejusikmangham',
+      time: '23분전',
+      profilePic: '/images/namju/profile-img-3.jpeg',
+    },
+    {
+      userName: 'werkjqw',
+      time: '30분전',
+      profilePic: '/images/namju/profile-img-default.jpeg',
+    },
+  ];
+
+  const REC_ITEM_LIST = [
+    {
+      userName: 'dassboss',
+      desc: 'akwjerb님 외 4명이 팔로우 중입니다',
+      profilePic: '/images/namju/like-info-img.jpeg',
+    },
+    {
+      userName: 'dassboss',
+      desc: 'akwjerb님 외 4명이 팔로우 중입니다',
+      profilePic: '/images/namju/like-info-img.jpeg',
+    },
+    {
+      userName: 'dassboss',
+      desc: 'akwjerb님 외 4명이 팔로우 중입니다',
+      profilePic: '/images/namju/like-info-img.jpeg',
+    },
+    {
+      userName: 'dassboss',
+      desc: 'akwjerb님 외 4명이 팔로우 중입니다',
+      profilePic: '/images/namju/like-info-img.jpeg',
+    },
+  ];
+
+  const TERMS_LIST = [
+    'Instagram 정보',
+    '지원',
+    '홍보 센터',
+    'API',
+    '채용 정보',
+    '개인정보처리방침',
+    '약관',
+    '디렉터리',
+    '프로필',
+    '해시태그',
+    '언어',
+  ];
+
   return (
     <div className="main-namju-container">
       <Nav />
       <main className="main-namju" id="main">
         <section className="feed" id="feed">
-          <FeedCard
-            profileSrc="images/namju/profile-img.jpeg"
-            name="southpole_pbf"
-            feedSrc="/images/namju/feed-img.jpeg"
-            likes="69"
-            caption="새해 복 많이 받으세요"
-            time="42분"
-          />
-
-          <FeedCard
-            profileSrc="images/namju/profile-img-2.jpeg"
-            name="hellonix"
-            feedSrc="/images/namju/feed-img-2.jpeg"
-            likes="129"
-            caption="꽃이랑🌸"
-            time="1시간"
-          />
-
-          <FeedCard
-            profileSrc="images/namju/profile-img-3.jpeg"
-            name="chansongjo"
-            feedSrc="/images/namju/feed-img-3.jpeg"
-            likes="14"
-            caption="여행길. 🏞"
-            time="2시간"
-          />
+          {feedList.map((feed, index) => (
+            <FeedCard
+              key={feed.id}
+              index={index}
+              userName={feed.userName}
+              profileSrc={feed.profileSrc}
+              feedSrc={feed.feedSrc}
+              commentDataUrl={feed.commentDataUrl}
+              numOfLikes={feed.numOfLikes}
+              caption={feed.caption}
+              isLiked={feed.isLiked}
+              time={feed.time}
+              likeFeed={likeFeed}
+              commentList={feed.commentList}
+            />
+          ))}
         </section>
 
         <aside className="sidebar" id="sideBar">
@@ -43,7 +114,7 @@ function Main() {
               <div className="profile-pic-wrap">
                 <img
                   src="./images/namju/profile-img.jpeg"
-                  alt="southpole_pbf profile picture"
+                  alt="southpole_pbf profile"
                   className="profile-pic"
                 />
               </div>
@@ -58,70 +129,27 @@ function Main() {
             <div className="story-title">
               <h1>스토리</h1>
               <h2>
-                <a href="">모두 보기</a>
+                <button href="">모두 보기</button>
               </h2>
             </div>
 
             <ul className="story-list" id="storyList">
-              <li className="story-item">
-                <button type="button" className="img-gradient">
-                  <div className="story-img-wrap">
-                    <img src="./images/namju/like-info-img.jpeg" alt="" />
+              {STORY_ITEM_LIST.map(item => (
+                <li className="story-item" key={item.userName}>
+                  <button type="button" className="img-gradient">
+                    <div className="story-img-wrap">
+                      <img src={item.profilePic} alt="" />
+                    </div>
+                    <div className="gradient" />
+                  </button>
+                  <div className="story-item-desc">
+                    <a href="#">
+                      <strong>{item.userName}</strong>
+                    </a>
+                    <span>{item.time}</span>
                   </div>
-                  <div className="gradient" />
-                </button>
-                <div className="story-item-desc">
-                  <a href="#">
-                    <strong>dassboss</strong>
-                  </a>
-                  <span>10분 전</span>
-                </div>
-              </li>
-
-              <li className="story-item">
-                <button type="button" className="img-gradient">
-                  <div className="story-img-wrap">
-                    <img src="./images/namju/profile-img-2.jpeg" alt="" />
-                  </div>
-                  <div className="gradient" />
-                </button>
-                <div className="story-item-desc">
-                  <a href="#">
-                    <strong>hellonix</strong>
-                  </a>
-                  <span>12분 전</span>
-                </div>
-              </li>
-
-              <li className="story-item">
-                <button type="button" className="img-gradient">
-                  <div className="story-img-wrap">
-                    <img src="./images/namju/profile-img-3.jpeg" alt="" />
-                  </div>
-                  <div className="gradient" />
-                </button>
-                <div className="story-item-desc">
-                  <a href="#">
-                    <strong>chansongjo</strong>
-                  </a>
-                  <span>23분 전</span>
-                </div>
-              </li>
-
-              <li className="story-item">
-                <button type="button" className="img-gradient">
-                  <div className="story-img-wrap">
-                    <img src="./images/namju/profile-img-default.jpeg" alt="" />
-                  </div>
-                  <div className="gradient" />
-                </button>
-                <div className="story-item-desc">
-                  <a href="#">
-                    <strong>awnerqqx</strong>
-                  </a>
-                  <span>30분 전</span>
-                </div>
-              </li>
+                </li>
+              ))}
             </ul>
           </section>
 
@@ -134,58 +162,28 @@ function Main() {
             </div>
 
             <ul className="rec-list">
-              <li className="rec-item">
-                <a href="#" className="rec-profile">
-                  <div className="rec-img-wrap">
-                    <img src="./images/namju/like-info-img.jpeg" alt="" />
-                  </div>
-                  <div className="rec-item-desc">
-                    <strong>dassboss</strong>
-                    <span>chansongjo님 외 4명이 팔로우 중입니다</span>
-                  </div>
-                </a>
-                <button>팔로우</button>
-              </li>
-              <li className="rec-item">
-                <a href="#" className="rec-profile">
-                  <div className="rec-img-wrap">
-                    <img src="./images/namju/like-info-img.jpeg" alt="" />
-                  </div>
-                  <div className="rec-item-desc">
-                    <strong>dassboss</strong>
-                    <span>chansongjo님 외 4명이 팔로우 중입니다</span>
-                  </div>
-                </a>
-                <button>팔로우</button>
-              </li>
-              <li className="rec-item">
-                <a href="#" className="rec-profile">
-                  <div className="rec-img-wrap">
-                    <img src="./images/namju/like-info-img.jpeg" alt="" />
-                  </div>
-                  <div className="rec-item-desc">
-                    <strong>dassboss</strong>
-                    <span>chansongjo님 외 4명이 팔로우 중입니다</span>
-                  </div>
-                </a>
-                <button>팔로우</button>
-              </li>
+              {REC_ITEM_LIST.map(item => (
+                <li className="rec-item">
+                  <a href="#" className="rec-profile">
+                    <div className="rec-img-wrap">
+                      <img src={item.profilePic} alt="" />
+                    </div>
+                    <div className="rec-item-desc">
+                      <strong>{item.userName}</strong>
+                      <span>{item.desc}</span>
+                    </div>
+                  </a>
+                  <button>팔로우</button>
+                </li>
+              ))}
             </ul>
           </section>
 
           <section className="terms">
             <div className="terms-link">
-              <a href="">Instagram 정보</a>
-              <a href="">지원</a>
-              <a href="">홍보 센터</a>
-              <a href="">API</a>
-              <a href="">채용 정보</a>
-              <a href="">개인정보처리방침</a>
-              <a href="">약관</a>
-              <a href="">디렉터리</a>
-              <a href="">프로필</a>
-              <a href="">해시태그</a>
-              <a href="">언어</a>
+              {TERMS_LIST.map(item => (
+                <a href="">{item}</a>
+              ))}
             </div>
             <div className="copyright">© 2019 INSTAGRAM</div>
           </section>
