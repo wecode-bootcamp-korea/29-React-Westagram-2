@@ -1,0 +1,56 @@
+$border-style: 1px solid#E6E6E6;
+
+#mainbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  margin: 50px auto;
+  border: $border-style;
+  width: 400px;
+  height: 500px;
+
+  #logo {
+    font-family: "Lobster", cursive;
+    font-size: 80px;
+    margin-top: 10px;
+  }
+
+  #inputbox {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: -80px;
+
+    input {
+      height: 40px;
+      border: $border-style;
+      border-radius: 8px;
+      padding-left: 10px;
+      margin-bottom: 10px;
+    }
+  }
+
+  #loginBtn {
+    button {
+      width: 80%;
+      height: 40px;
+      background-color: rgba(0, 149, 246);
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-weight: bolder;
+      font-size: 15px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  #information {
+    margin-bottom: 20px;
+    font-size: 15px;
+  }
+}

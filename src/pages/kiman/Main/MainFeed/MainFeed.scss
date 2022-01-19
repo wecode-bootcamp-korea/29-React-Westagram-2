@@ -1,0 +1,163 @@
+@mixin flex-center {
+  display: flex;
+  justify-content: space-between;
+}
+
+@mixin others-img-size {
+  width: 40px;
+  height: 40px;
+}
+
+#mainfeed {
+  width: 100%;
+
+  #article {
+    border: 1px solid #f2f2f2;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+
+    .writer {
+      @include flex-center;
+      background-color: white;
+      padding: 10px;
+
+      .profile {
+        display: flex;
+
+        img {
+          @include others-img-size;
+          border-radius: 50%;
+        }
+
+        .mainname {
+          margin: auto 10px;
+        }
+      }
+
+      .smallmenu {
+        margin-top: auto;
+        margin-bottom: auto;
+        text-align: center;
+      }
+    }
+  }
+  .mainimg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .commentbox {
+    background-color: white;
+    .smalllogo {
+      @include flex-center;
+      margin-left: 10px;
+      margin-right: 10px;
+
+      i {
+        font-size: 20px;
+        color: gray;
+      }
+      .smalllogoleft {
+        i {
+          margin-right: 5px;
+        }
+
+        #likeheart {
+          color: gray;
+        }
+      }
+    }
+
+    .like {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      margin-left: 10px;
+      font-size: 10px;
+
+      div {
+        margin-bottom: auto;
+        font-weight: bolder;
+      }
+    }
+
+    .comment {
+      ul {
+        padding-left: 0;
+        margin: 0px;
+        max-height: 150px;
+        overflow: scroll;
+
+        li {
+          .userwriteall {
+            @include flex-center;
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            padding-left: 0;
+            padding-top: auto;
+            padding-bottom: auto;
+
+            .userwrite {
+              display: flex;
+              align-items: center;
+              font-size: 10px;
+
+              .userid {
+                margin-right: 5px;
+                font-weight: bolder;
+                padding-top: auto;
+                padding-bottom: auto;
+              }
+
+              .usercomment {
+                align-items: center;
+                word-break: break-all;
+              }
+
+              .hidden {
+                border: none;
+                background-color: white;
+                color: white;
+                text-align: center;
+                &:hover {
+                  color: black;
+                }
+              }
+            }
+            .fas.fa-heart {
+              color: gray;
+            }
+
+            .fas.fa-heart.clicked {
+              color: red;
+            }
+          }
+        }
+      }
+    }
+    .commentinputbox {
+      width: 100%;
+      position: relative;
+
+      input {
+        padding-left: 10px;
+        width: 100%;
+        height: 30px;
+        border: none;
+        border-top: 1px solid #f2f2f2;
+        font-size: 10px;
+      }
+      button {
+        position: absolute;
+        border: none;
+        background-color: white;
+        width: 30px;
+        top: 10px;
+        right: 10px;
+        font-size: 10px;
+        color: rgba(0, 149, 246);
+      }
+    }
+  }
+}
