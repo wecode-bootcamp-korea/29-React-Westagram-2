@@ -27,8 +27,10 @@ const FeedCard = ({
   };
 
   const handleEnterPress = e => {
-    e.preventDefault();
-    handleClick();
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleClick();
+    }
   };
 
   const handleClick = () => {
@@ -36,7 +38,7 @@ const FeedCard = ({
       setCommentList(prevArr => [
         ...prevArr,
         {
-          id: prevArr.length + 1,
+          id: prevArr[prevArr.length - 1].id + 1,
           userName: 'userName',
           content: textareaValue,
           isLiked: false,
@@ -150,7 +152,7 @@ const FeedCard = ({
           className="comment-area"
           placeholder="댓글 달기..."
           onChange={handleChange}
-          onKeyPress={e => (e.key === 'Enter' ? handleEnterPress(e) : false)}
+          onKeyPress={handleEnterPress}
           value={textareaValue}
         />
         <button
