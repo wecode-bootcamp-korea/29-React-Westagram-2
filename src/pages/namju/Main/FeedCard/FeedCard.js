@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './FeedCard.scss';
 import FeedComment from './FeedComment/FeedComment';
 
@@ -53,7 +54,7 @@ const FeedCard = props => {
   return (
     <article className="feed-card-namju" id="feedCard">
       <div className="feed-header">
-        <a href="/main" className="feed-header-left">
+        <Link to="/main-namju" className="feed-header-left">
           <div className="profile-pic-wrap">
             <img
               aria-hidden
@@ -63,7 +64,7 @@ const FeedCard = props => {
             />
           </div>
           <strong className="user-name">{props.userName}</strong>
-        </a>
+        </Link>
         <button type="button">
           <img alt="More options" src="/images/namju/icon-elipsis.svg" />
         </button>
@@ -108,9 +109,9 @@ const FeedCard = props => {
           />
         </div>
         <span>
-          <a href="/main">dassboss</a>님
+          <Link to="/main-namju">dassboss</Link>님
           {props.numOfLikes >= 2 && (
-            <a href="/main"> 외 {props.numOfLikes - 1}명</a>
+            <Link to="/main-namju"> 외 {props.numOfLikes - 1}명</Link>
           )}
           이 좋아합니다
         </span>

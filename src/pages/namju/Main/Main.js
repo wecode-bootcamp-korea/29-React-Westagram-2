@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Nav from '../../../components/Nav/Nav';
 import FeedCard from './FeedCard/FeedCard';
 import { STORY_ITEM_LIST, REC_ITEM_LIST, TERMS_LIST } from './main-namju-lists';
@@ -51,7 +52,7 @@ function Main() {
 
         <aside className="sidebar" id="sideBar">
           <h1 className="info-me">
-            <a href="#">
+            <Link to="/main-namju">
               <div className="profile-pic-wrap">
                 <img
                   src="./images/namju/profile-img.jpeg"
@@ -63,14 +64,14 @@ function Main() {
                 <strong>southpole_pbf</strong>
                 <div>namju yun</div>
               </div>
-            </a>
+            </Link>
           </h1>
 
           <section className="story">
             <div className="story-title">
               <h1>스토리</h1>
               <h2>
-                <button href="">모두 보기</button>
+                <Link to="/main-namju">모두 보기</Link>
               </h2>
             </div>
 
@@ -84,9 +85,9 @@ function Main() {
                     <div className="gradient" />
                   </button>
                   <div className="story-item-desc">
-                    <a href="#">
+                    <Link to="/main-namju">
                       <strong>{item.userName}</strong>
-                    </a>
+                    </Link>
                     <span>{item.time}</span>
                   </div>
                 </li>
@@ -98,14 +99,14 @@ function Main() {
             <div className="rec-title">
               <h1>회원님을 위한 추천</h1>
               <h2>
-                <a href="">모두 보기</a>
+                <Link to="/main-namju">모두 보기</Link>
               </h2>
             </div>
 
             <ul className="rec-list">
               {REC_ITEM_LIST.map((item, index) => (
                 <li className="rec-item" key={index}>
-                  <a href="#" className="rec-profile">
+                  <Link to="/main-namju" className="rec-profile">
                     <div className="rec-img-wrap">
                       <img src={item.profilePic} alt="" />
                     </div>
@@ -113,7 +114,7 @@ function Main() {
                       <strong>{item.userName}</strong>
                       <span>{item.desc}</span>
                     </div>
-                  </a>
+                  </Link>
                   <button>팔로우</button>
                 </li>
               ))}
@@ -123,9 +124,9 @@ function Main() {
           <section className="terms">
             <div className="terms-link">
               {TERMS_LIST.map(item => (
-                <a href="" key={item}>
+                <Link to="/main-namju" key={item}>
                   {item}
-                </a>
+                </Link>
               ))}
             </div>
             <div className="copyright">© 2019 INSTAGRAM</div>
