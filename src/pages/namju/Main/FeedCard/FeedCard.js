@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './FeedCard.scss';
 import FeedComment from './FeedComment/FeedComment';
+import './FeedCard.scss';
 
 const FeedCard = ({
   index,
@@ -31,16 +31,13 @@ const FeedCard = ({
     handleClick();
   };
 
-  const loggedInEmail = localStorage.getItem('userName');
-  const loggedInUserName = loggedInEmail.slice(0, loggedInEmail.indexOf('@'));
-
   const handleClick = () => {
     if (textareaValue) {
       setCommentList(prevArr => [
         ...prevArr,
         {
           id: prevArr.length + 1,
-          userName: loggedInUserName,
+          userName: 'userName',
           content: textareaValue,
           isLiked: false,
         },
