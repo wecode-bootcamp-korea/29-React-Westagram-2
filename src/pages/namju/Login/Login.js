@@ -40,7 +40,7 @@ function Login() {
         if (result.message === 'USER_DOES_NOT_EXIST') {
           alert('잘못입력했으니 확인 부탁');
         } else if (result.message === 'INVALID_PASSWORD') {
-          alert('비번 넘 짧음');
+          alert('비번 확인해라!!!');
         } else {
           alert('냠냠굿~');
           navigate('/main-namju');
