@@ -77,7 +77,7 @@ function Main() {
             <ul className="story-list" id="storyList">
               {STORY_ITEM_LIST.map(item => (
                 <li className="story-item" key={item.userName}>
-                  <button type="button" className="img-gradient">
+                  <button type="button" className="story-profile">
                     <div className="story-img-wrap">
                       <img src={item.profilePic} alt="" />
                     </div>
