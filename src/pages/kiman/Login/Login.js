@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 const Login = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate('');
 
   const [inputValues, setInputValues] = useState({
     id: '',
@@ -19,6 +19,28 @@ const Login = () => {
     });
   };
   const goToMain = () => {
+    //회원가입용 : 'http://10.58.3.42:8000/users/signup'
+    //로그인용 : 'http://10.58.3.42:8000/users/signin'    창현님꺼 : 'http://172.28.131.163:8003/singup'
+    //백엔드 통신용
+    // fetch('http://10.58.3.42:8000/users/signin', {
+    //   method: 'POST',
+    //   body: JSON.stringify({
+    //     name: '김기만',
+    //     email: inputValues.id,
+    //     password: inputValues.password,
+    //     phone_number: '010-8840-6505',
+    //   }),
+    // })
+    //   .then(response => response.json())
+    //   .then(result => {
+    //     if (result.Message === 'Success') {
+    //       localStorage.setItem('JWT', result.JWT);
+    //       navigate('/main-kiman');
+    //     } else {
+    //       alert('아이디 및 비밀번호를 확인해주세요');
+    //     }
+    //   });
+    //이전에 쓰던거
     if (inputValues.id.indexOf('@') > -1 && inputValues.password.length >= 5) {
       navigate('/main-kiman');
     } else {

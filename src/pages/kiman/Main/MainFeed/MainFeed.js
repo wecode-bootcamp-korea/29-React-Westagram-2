@@ -5,14 +5,15 @@ import './MainFeed.scss';
 const MainFeed = ({ mockdata }) => {
   const inputRef = useRef();
   const [userComments, setuserComments] = useState(mockdata);
-  // { name: "test", comment: "tester1", id: Math.random() },
 
   const [userComment, setuserComment] = useState('');
 
   const onChange = e => setuserComment(e.target.value);
 
   const onClick = e => {
-    if (inputRef.current.value !== '') {
+    if (!inputRef.current.value) {
+      alert('댓글을 입력해주세요');
+    } else {
       setuserComments([
         ...userComments,
         {
@@ -24,8 +25,6 @@ const MainFeed = ({ mockdata }) => {
       ]);
       inputRef.current.value = null;
       setuserComment('');
-    } else {
-      alert('댓글을 입력해주세요');
     }
   };
 
