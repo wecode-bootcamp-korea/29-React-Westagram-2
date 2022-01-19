@@ -19,7 +19,7 @@ const Main = () => {
   }, []);
 
   return (
-    <div className="mainContainer">
+    <div className="Container">
       <Nav />
       <main className="main">
         <div className="feedBox">

@@ -1,5 +1,11 @@
 import React from 'react';
 import './Aside.scss';
+import AsideStory from './Story/AsideStory';
+import STORY_LIST from './Story/storyData';
+import AsideInfo from './AsideInfo';
+import AsideFollow from './Follow/AsideFollow';
+import FOLLOW_LIST from './Follow/followData';
+
 const Aside = () => {
   return (
     <div className="aside">
@@ -20,49 +26,17 @@ const Aside = () => {
           <h1>스토리</h1>
           <a href="/#">모두 보기</a>
         </div>
-        <div className="story">
-          <img
-            className="profileImg4"
-            src="./images/jihong/jihong.jpeg"
-            alt="프로필"
-          />
-          <div className="storyProfile">
-            <span>whoohawhooha</span>
-            <span>16분전</span>
-          </div>
-        </div>
-        <div className="story">
-          <img
-            className="profileImg4"
-            src="./images/jihong/jihong.jpeg"
-            alt="프로필"
-          />
-          <div className="storyProfile">
-            <span>whoohawhooha</span>
-            <span>24분전</span>
-          </div>
-        </div>
-        <div className="story">
-          <img
-            className="profileImg4"
-            src="./images/jihong/jihong.jpeg"
-            alt="프로필"
-          />
-          <div className="storyProfile">
-            <span>whoohawhooha</span>
-            <span>30분전</span>
-          </div>
-        </div>
-        <div className="story">
-          <img
-            className="profileImg4"
-            src="./images/jihong/jihong.jpeg"
-            alt="프로필"
-          />
-          <div className="storyProfile">
-            <span>whoohawhooha</span>
-            <span>30분전</span>
-          </div>
+        <div className="storyContent">
+          {STORY_LIST.map(aside => {
+            return (
+              <AsideStory
+                key={aside.id}
+                userName={aside.userName}
+                timeline={aside.timeline}
+                userImg={aside.userImg}
+              />
+            );
+          })}
         </div>
       </div>
 
@@ -71,65 +45,20 @@ const Aside = () => {
           <h1>회원님을 위한 추천</h1>
           <a href="/#">모두 보기</a>
         </div>
-        <div className="follow">
-          <img
-            className="profileImg5"
-            src="./images/jihong/jihong.jpeg"
-            alt="프로필"
-          />
-          <div className="followProfile">
-            <span>whoohawhooha</span>
-            <span>ooo님 외3명이 팔로우합니다.</span>
-          </div>
-          <a href="/#">팔로우</a>
-        </div>
-        <div className="follow">
-          <img
-            className="profileImg5"
-            src="./images/jihong/jihong.jpeg"
-            alt="프로필"
-          />
-          <div className="followProfile">
-            <span>whoohawhooha</span>
-            <span>ooo님 외3명이 팔로우합니다.</span>
-          </div>
-          <a href="/#">팔로우</a>
-        </div>
-        <div className="follow">
-          <img
-            className="profileImg5"
-            src="./images/jihong/jihong.jpeg"
-            alt="프로필"
-          />
-          <div className="followProfile">
-            <span>whoohawhooha</span>
-            <span>ooo님 외3명이 팔로우합니다.</span>
-          </div>
-          <a href="/#">팔로우</a>
-        </div>
-        <div className="follow">
-          <img
-            className="profileImg5"
-            src="./images/jihong/jihong.jpeg"
-            alt="프로필"
-          />
-          <div className="followProfile">
-            <span>whoohawhooha</span>
-            <span>ooo님 외3명이 팔로우합니다.</span>
-          </div>
-          <a href="/#">팔로우</a>
+        <div className="followContent">
+          {FOLLOW_LIST.map(follow => {
+            return (
+              <AsideFollow
+                key={follow.id}
+                userName={follow.userName}
+                userImg={follow.userImg}
+                followPeople={follow.followPeople}
+              />
+            );
+          })}
         </div>
       </div>
-
-      <div className="asideInfo">
-        <p>
-          Westagram 정보&middot;지원&middot;홍보 센터&middot;API&middot;채용
-          정보&middot;약관
-          <br />
-          &middot;개인정보처리방침&middot;디렉터리&middot;프로필&middot;해시태그&middot;언어
-        </p>
-        <p>&copy;&nbsp;&nbsp;2022 WESTAGRAM&nbsp;</p>
-      </div>
+      <AsideInfo />
     </div>
   );
 };
