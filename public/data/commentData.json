@@ -1,0 +1,84 @@
+[
+  {
+    "key": 1,
+    "id": "test",
+    "selfiImg": "/images/jeongdo/europe.jpg",
+    "feedImg": "/images/jeongdo/steak.jpg",
+    "describtion": "This is super coooooool!",
+    "feedLike": true,
+    "comment": [
+      {
+        "id": 1,
+        "userName": "wecode",
+        "content": "Welcome to world best coding bootcamp!",
+        "isLiked": true
+      },
+      {
+        "id": 2,
+        "userName": "joonsikyang",
+        "content": "Hi there.",
+        "isLiked": false
+      },
+      {
+        "id": 3,
+        "userName": "jayPark",
+        "content": "Hey.",
+        "isLiked": false
+      }
+    ]
+  },
+  {
+    "key": 2,
+    "id": "test",
+    "selfiImg": "/images/jeongdo/europe.jpg",
+    "feedImg": "/images/jeongdo/jack.jpg",
+    "feedLike": true,
+    "comment": [
+      {
+        "id": 1,
+        "userName": "wecode2",
+        "content": "Welcome to world best coding bootcamp!2",
+        "isLiked": true
+      },
+      {
+        "id": 2,
+        "userName": "joonsikyang2",
+        "content": "Hi there.2",
+        "isLiked": false
+      },
+      {
+        "id": 3,
+        "userName": "jayPark",
+        "content": "Hey2.",
+        "isLiked": false
+      }
+    ]
+  },
+  {
+    "key": 3,
+    "id": "test",
+    "selfiImg": "/images/jeongdo/europe.jpg",
+    "feedImg": "/images/jeongdo/europe.jpg",
+    "feedLike": true,
+    "comment": [
+      {
+        "id": 1,
+        "userName": "wecode3",
+        "content": "Welcome to world best coding bootcamp!3",
+        "isLiked": true
+      },
+      {
+        "id": 2,
+        "userName": "joonsikyang3",
+        "content": "Hi there.3",
+        "isLiked": false
+      },
+      {
+        "id": 3,
+        "userName": "jayPark3",
+        "content": "Hey3.",
+        "isLiked": false
+      }
+    ]
+  }
+]
