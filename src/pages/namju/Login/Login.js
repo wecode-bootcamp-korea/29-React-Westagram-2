@@ -25,9 +25,27 @@ function Login() {
 
   const navigate = useNavigate();
   const goToMain = () => {
-    window.localStorage.setItem('userName', inputValues.userName);
-    window.localStorage.setItem('userPassword', inputValues.password);
-    navigate('/main-namju');
+    fetch('http://10.58.2.159/users/signin', {
+      method: 'POST',
+      body: JSON.stringify({
+        email: inputValues.userName,
+        password: inputValues.password,
+        // account: inputValues.userName,
+        // name: inputValues.userName,
+        // phone: '010-2937-1623',
+      }),
+    })
+      .then(response => response.json())
+      .then(result => {
+        if (result.message === 'USER_DOES_NOT_EXIST') {
+          alert('잘못입력했으니 확인 부탁');
+        } else if (result.message === 'INVALID_PASSWORD') {
+          alert('비번 넘 짧음');
+        } else {
+          alert('냠냠굿~');
+          navigate('/main-namju');
+        }
+      });
   };
 
   return (
@@ -41,6 +59,7 @@ function Login() {
             type="text"
             placeholder="전화번호, 사용자 이름 또는 이메일"
             onChange={handleInput}
+            onKeyPress={e => (e.key === 'Enter' ? goToMain() : null)}
           />
           <input
             id="inputPassword"
@@ -48,8 +67,14 @@ function Login() {
             type="password"
             placeholder="비밀번호"
             onChange={handleInput}
+            onKeyPress={e => (e.key === 'Enter' ? goToMain() : null)}
           />
-          <button id="btnLogin" type="submit" disabled={!inputValid}>
+          <button
+            id="btnLogin"
+            type="button"
+            onClick={goToMain}
+            disabled={!inputValid}
+          >
             로그인
           </button>
         </form>
