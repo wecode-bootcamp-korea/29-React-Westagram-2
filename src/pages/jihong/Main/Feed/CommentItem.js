@@ -1,22 +1,30 @@
 import React from 'react';
 import { useState } from 'react';
 
-const CommentItem = ({ comment, index, id, setComments, comments }) => {
-  const [isLike, setIsLike] = useState(false);
+const CommentItem = ({
+  comment,
+  index,
+  id,
+  setComments,
+  comments,
+  userName,
+}) => {
+  const [isLiked, setIsLiked] = useState(comment.isLike);
   const isLikeClick = () => {
-    setIsLike(!isLike);
+    setIsLiked(!isLiked);
   };
 
   const onRemove = id => {
     setComments(comments.filter(user => user.id !== id));
   };
+
   return (
     <div>
       <li key={index}>
-        <span>whoohawhooha</span>
+        <span>{userName}</span>
         {comment.comment}
         <button className="likeBtn" onClick={isLikeClick}>
-          {isLike ? (
+          {isLiked ? (
             <i className="fas fa-heart" />
           ) : (
             <i className="far fa-heart" />
