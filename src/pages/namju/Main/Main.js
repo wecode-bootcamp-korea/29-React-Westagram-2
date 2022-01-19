@@ -39,13 +39,12 @@ function Main() {
               userName={feed.userName}
               profileSrc={feed.profileSrc}
               feedSrc={feed.feedSrc}
-              commentDataUrl={feed.commentDataUrl}
               numOfLikes={feed.numOfLikes}
               caption={feed.caption}
               isLiked={feed.isLiked}
               time={feed.time}
               handleLikeFeed={handleLikeFeed}
-              commentList={feed.commentList}
+              commentData={feed.commentData}
             />
           ))}
         </section>

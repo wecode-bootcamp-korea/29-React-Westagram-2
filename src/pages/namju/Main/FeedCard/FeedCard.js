@@ -3,12 +3,23 @@ import { Link } from 'react-router-dom';
 import './FeedCard.scss';
 import FeedComment from './FeedComment/FeedComment';
 
-const FeedCard = props => {
+const FeedCard = ({
+  index,
+  userName,
+  profileSrc,
+  feedSrc,
+  numOfLikes,
+  caption,
+  isLiked,
+  time,
+  handleLikeFeed,
+  commentData,
+}) => {
   const [textareaValue, setTextareaValue] = useState('');
   const [commentList, setCommentList] = useState([]);
 
   useEffect(() => {
-    setCommentList(props.commentList);
+    setCommentList(commentData);
   }, []);
 
   const handleChange = e => {
@@ -58,29 +69,29 @@ const FeedCard = props => {
           <div className="profile-pic-wrap">
             <img
               aria-hidden
-              src={props.profileSrc}
+              src={profileSrc}
               className="profile-pic"
               alt="profile picture"
             />
           </div>
-          <strong className="user-name">{props.userName}</strong>
+          <strong className="user-name">{userName}</strong>
         </Link>
         <button type="button">
           <img alt="More options" src="/images/namju/icon-elipsis.svg" />
         </button>
       </div>
-      <img src={props.feedSrc} alt="feed" className="feed-img" />
+      <img src={feedSrc} alt="feed" className="feed-img" />
       <div className="feed-btns">
         <div className="feed-btns-left">
           <button
             type="button"
             className="btn-like"
-            onClick={() => props.handleLikeFeed(props.index)}
+            onClick={() => handleLikeFeed(index)}
           >
             <img
               alt="like feed"
               src={
-                props.isLiked
+                isLiked
                   ? '/images/namju/heart-filled.svg'
                   : '/images/namju/heart-empty.svg'
               }
@@ -110,15 +121,15 @@ const FeedCard = props => {
         </div>
         <span>
           <Link to="/main-namju">dassboss</Link>님
-          {props.numOfLikes >= 2 && (
-            <Link to="/main-namju"> 외 {props.numOfLikes - 1}명</Link>
+          {numOfLikes >= 2 && (
+            <Link to="/main-namju"> 외 {numOfLikes - 1}명</Link>
           )}
           이 좋아합니다
         </span>
       </div>
       <div className="feed-content">
-        <strong>{props.userName}</strong>
-        <span>{props.caption}</span>
+        <strong>{userName}</strong>
+        <span>{caption}</span>
         <button className="btn-more" type="button">
           더 보기
         </button>
@@ -136,7 +147,7 @@ const FeedCard = props => {
         />
       ))}
 
-      <aside className="feed-time">{props.time} 전</aside>
+      <aside className="feed-time">{time} 전</aside>
       <form className="feed-comment-form" method="post">
         <textarea
           className="comment-area"
