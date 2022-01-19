@@ -24,11 +24,11 @@ const Login = () => {
       : setIsActive(false);
   };
 
-  /*const handleKeyPress = e => {
-    if(e.key ==='Enter'){
-      goToMain()
-    };      
-  };*/
+  const handleKeyPress = e => {
+    if (e.key === 'Enter') {
+      goToMain();
+    }
+  };
 
   const navigate = useNavigate();
   const goToMain = () => {
@@ -59,6 +59,11 @@ const Login = () => {
             placeholder="Password"
             onChange={handlePwInput}
             onKeyUp={isPassedLogin}
+            onKeyPress={
+              idInput.includes('@') && pwInput.length > 4
+                ? handleKeyPress
+                : null
+            }
           />
 
           <button
@@ -67,6 +72,7 @@ const Login = () => {
             disabled={
               !idInput.includes('@') || pwInput.length < 4 ? true : false
             }
+            type="button"
           >
             Log In
           </button>
