@@ -19,7 +19,6 @@ const Main = () => {
       });
   }, []);
 
-  console.log(feeds);
   return (
     <div className="mainPage">
       <Nav />

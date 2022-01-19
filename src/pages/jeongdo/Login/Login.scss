@@ -29,6 +29,11 @@
   flex-direction: column;
 }
 
+.inputInfo form {
+  @include center;
+  flex-direction: column;
+}
+
 input {
   width: 100%;
   background-color: #fafafa;
