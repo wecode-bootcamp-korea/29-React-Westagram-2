@@ -1,0 +1,54 @@
+@import '../../../../../variables';
+
+.feed-comment-namju {
+  padding: 0 16px;
+  margin-bottom: 4px;
+
+  .feed-comment-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &:hover {
+      .comment-btns {
+        .btn-delete {
+          display: inline-block;
+        }
+      }
+    }
+
+    .comment {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+
+      strong {
+        margin-right: 4px;
+      }
+    }
+
+    .comment-btns {
+      button {
+        padding: 0;
+
+        &.btn-like {
+          img {
+            box-sizing: content-box;
+            width: 14px;
+            padding: 1px 3px;
+          }
+        }
+
+        &.btn-delete {
+          display: none;
+
+          img {
+            box-sizing: content-box;
+            width: 15px;
+            padding: 0 3px;
+          }
+        }
+      }
+    }
+  }
+}

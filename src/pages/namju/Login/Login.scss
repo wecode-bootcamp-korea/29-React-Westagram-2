@@ -1,0 +1,99 @@
+@import '../../../variables';
+@import url('http://fonts.cdnfonts.com/css/billabong');
+
+@mixin flex($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+}
+
+@mixin position-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.login-namju-viewport {
+  height: 100vh;
+  min-height: 500px;
+  position: relative;
+  background-color: $bg;
+}
+
+.login-namju {
+  @include flex(column);
+  @include position-center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif;
+  width: 350px;
+  padding: 10px 0;
+  border: 1px solid $border;
+  border-radius: 1px;
+  background-color: #fff;
+
+  .westagram-logo {
+    margin: 22px auto 36px;
+    font-family: 'Billabong', sans-serif;
+    font-size: 60px;
+  }
+
+  .login-form {
+    @include flex(column);
+    margin: 0 40px 50px;
+
+    input {
+      height: 38px;
+      margin-bottom: 6px;
+      padding: 0 8px;
+      background-color: $bg;
+      border: 1px solid $border;
+      border-radius: 3px;
+      font-size: 12px;
+
+      &:focus {
+        border: 1px solid $border-focus;
+        outline: none;
+      }
+
+      &::placeholder {
+        color: $font-grey;
+        font-size: 12px;
+      }
+
+      &:-ms-input-placeholder {
+        color: $font-grey;
+        font-size: 12px;
+      }
+
+      &::-ms-input-placeholder {
+        color: $font-grey;
+        font-size: 12px;
+      }
+    }
+
+    button {
+      margin-top: 8px;
+      height: 30px;
+      padding: 5px 9px;
+      border-radius: 4px;
+      color: #fff;
+      background-color: $blue;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+
+      &:disabled {
+        opacity: 0.3;
+        cursor: default;
+      }
+    }
+  }
+
+  a {
+    margin: 10px auto;
+    color: #01376a;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+}
