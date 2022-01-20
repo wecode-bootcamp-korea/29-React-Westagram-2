@@ -1,0 +1,83 @@
+[
+  {
+    "key": 1,
+    "userName": "MICHALE_JORDAN",
+    "userImg": "/images/jihong/jordan.jpeg",
+    "feedImg": "/images/jihong/nike.png",
+    "description": "JUST Do IT",
+    "comments": [
+      {
+        "id": 1,
+        "userName": "xxxInstagram_User_1",
+        "comment": "I Love NIKE",
+        "isLike": true
+      },
+      {
+        "id": 2,
+        "userName": "xxxInstagram_User_2",
+        "comment": "I Love NIKE",
+        "isLike": false
+      },
+      {
+        "id": 3,
+        "userName": "xxxInstagram_User_3",
+        "conmment": "I Love NIKE",
+        "isLike": true
+      }
+    ]
+  },
+  {
+    "key": 2,
+    "userName": "HEDI_SLIMAN",
+    "userImg": "/images/jihong/sliman.jpeg",
+    "feedImg": "/images/jihong/celine.jpeg",
+    "description": "CELINE 22S/S",
+    "comments": [
+      {
+        "id": 1,
+        "userName": "xxxInstagram_User_1",
+        "comment": "I Love CELINE",
+        "isLike": true
+      },
+      {
+        "id": 2,
+        "userName": "xxxInstagram_User_2",
+        "comment": "I Love CELINE",
+        "isLike": false
+      },
+      {
+        "id": 3,
+        "userName": "xxxInstagram_User_3",
+        "comment": "I Love CELINE",
+        "isLike": true
+      }
+    ]
+  },
+  {
+    "key": 3,
+    "userName": "DEMNA_GVASALIA",
+    "userImg": "/images/jihong/demna.jpeg",
+    "feedImg": "/images/jihong/vetement.jpeg",
+    "description": "VETEMENTS 22S/S",
+    "comments": [
+      {
+        "id": 1,
+        "userName": "xxxInstagram_User_1",
+        "comment": "I Love VETEMENTS",
+        "isLike": true
+      },
+      {
+        "id": 2,
+        "userName": "xxxInstagram_User_2",
+        "comment": "I Love VETEMENTS",
+        "isLike": false
+      },
+      {
+        "id": 3,
+        "userName": "xxxInstagram_User_3",
+        "comment": "I Love VETEMENTS",
+        "isLike": true
+      }
+    ]
+  }
+]

@@ -1,0 +1,162 @@
+@mixin login-btn {
+  width: 258px;
+  height: 30px;
+  padding: 5px 9px;
+  margin: 10px auto;
+  border: 0px;
+  border-radius: 4px;
+  color: white;
+}
+
+@mixin font($size: 24px) {
+  font-family: 'Lobster', cursive;
+  font-size: $size;
+  color: #262626;
+}
+
+.loginContainer {
+  width: 350px;
+  height: 100%;
+  margin: 0 auto;
+  background-color: #fafafa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .loginForm {
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #dbdbdb;
+
+    .formTitle {
+      font-family: 'Lobster', cursive;
+      font-size: 36px;
+      text-align: center;
+      width: 175px;
+      height: 51px;
+      margin: 30px auto 22px auto;
+      color: #262626;
+    }
+
+    .loginIdPwBtn {
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto;
+      #inputId,
+      #inputPw {
+        margin: 0px auto 10px auto;
+        width: 258px;
+        height: 38px;
+        padding: 9px 8px 10px 8px;
+        background-color: #fafafa;
+        border: 1px solid #dbdbdb;
+        border-radius: 2px;
+      }
+      #inputId::placeholder,
+      #inputPw::placeholder {
+        font-size: 12px;
+        color: #979797;
+      }
+      #inputId:focus,
+      #inputPw:focus {
+        outline: 1;
+        outline-color: #dbdbdb;
+      }
+
+      #loginBtnDisable {
+        @include login-btn;
+        background-color: rgb(187, 224, 253);
+      }
+
+      #loginBtnActive {
+        @include login-btn;
+        background-color: #1c7ed6;
+      }
+
+      #loginBtnActive:active {
+        @include login-btn;
+        background-color: rgb(187, 224, 253);
+        transition: 0.5s;
+      }
+    }
+
+    .formOr {
+      width: 258px;
+      height: 15px;
+      margin: 10px auto 18px auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .orText {
+        width: 18.828px;
+        height: 15px;
+        display: flex;
+        margin: 0px 18px;
+        font-size: 13px;
+        color: #8e8e8e;
+        align-items: center;
+        flex-basis: 100%;
+        justify-content: space-between;
+      }
+
+      .orText::before {
+        content: '';
+        flex-grow: 1;
+        line-height: 0px;
+        margin: 0 18px 0 -18px;
+        background: #dbdbdb;
+        height: 1px;
+        font-size: 0px;
+      }
+
+      .orText::after {
+        content: '';
+        flex-grow: 1;
+        line-height: 0px;
+        margin: 0 -18px 0 18px;
+        background: #dbdbdb;
+        height: 1px;
+        font-size: 0px;
+      }
+    }
+
+    .formLinkBtn {
+      width: 258px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 13px auto 10px auto;
+
+      a {
+        text-decoration: none;
+        color: #385185;
+      }
+
+      .fa-facebook-square {
+        font-size: 16px;
+        margin-right: 8px;
+        color: #385185;
+      }
+
+      .linkBtn1 {
+        font-weight: 600;
+        font-size: 12px;
+      }
+    }
+
+    .formForgotPw {
+      width: 350px;
+      height: 16px;
+      margin: 12px auto 30px auto;
+      font-size: 12px;
+      font-weight: 500;
+      text-align: center;
+      text-decoration: none;
+      color: #385185;
+    }
+  }
+}

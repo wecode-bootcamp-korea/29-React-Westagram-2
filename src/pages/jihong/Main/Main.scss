@@ -1,0 +1,51 @@
+$background-color: #fafafa;
+$content-background: white;
+$content-color: #979797;
+$emphasize-color: #232323;
+$border-out: 2px solid #dbdbdb;
+$border-in: 1px solid #dbdbdb;
+
+@mixin emphasize-font($fontsize: 24px) {
+  font-family: 'Lobster', cursive;
+  font-size: $fontsize;
+  color: #232323;
+}
+
+@mixin font($size: 24px) {
+  font-family: 'Lobster', cursive;
+  font-size: $size;
+  color: #262626;
+}
+
+html {
+  height: 100%;
+
+  body {
+    height: 100%;
+    margin: 0 auto;
+    background-color: $background-color;
+
+    #root {
+      height: 100%;
+
+      .container {
+        margin: 0 auto;
+        background-color: $background-color;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .main {
+          width: 1000px;
+          display: flex;
+          margin-top: 60px;
+          margin-bottom: 20px;
+
+          .feedBox {
+            width: 67%;
+          }
+        }
+      }
+    }
+  }
+}
