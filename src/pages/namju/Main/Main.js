@@ -9,9 +9,7 @@ function Main() {
   const [feedList, setFeedList] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/data/namju/feedData-namju.json', {
-      method: 'GET',
-    })
+    fetch('/data/namju/feedData-namju.json')
       .then(res => res.json())
       .then(data => {
         setFeedList(data);
@@ -122,8 +120,8 @@ function Main() {
 
           <section className="terms">
             <div className="terms-link">
-              {TERMS_LIST.map(item => (
-                <Link to="/main-namju" key={item}>
+              {TERMS_LIST.map((item, idx) => (
+                <Link to="/main-namju" key={idx}>
                   {item}
                 </Link>
               ))}

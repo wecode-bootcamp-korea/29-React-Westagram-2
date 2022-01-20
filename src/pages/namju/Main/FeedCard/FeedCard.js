@@ -29,24 +29,24 @@ const FeedCard = ({
   const handleEnterPress = e => {
     if (e.key === 'Enter') {
       e.preventDefault();
-      handleClick();
+      if (textareaValue) {
+        handleClick();
+      }
     }
   };
 
   const handleClick = () => {
-    if (textareaValue) {
-      setCommentList(prevArr => [
-        ...prevArr,
-        {
-          id: prevArr[prevArr.length - 1].id + 1,
-          userName: 'userName',
-          content: textareaValue,
-          isLiked: false,
-        },
-      ]);
+    setCommentList(prevArr => [
+      ...prevArr,
+      {
+        id: prevArr[prevArr.length - 1].id + 1,
+        userName: 'userName',
+        content: textareaValue,
+        isLiked: false,
+      },
+    ]);
 
-      setTextareaValue('');
-    }
+    setTextareaValue('');
   };
 
   const deleteComment = commentIndex => {
@@ -113,7 +113,7 @@ const FeedCard = ({
       <div className="feed-like-info">
         <div className="like-info-img-wrap">
           <img
-            src="./images/namju/like-info-img.jpeg"
+            src="/images/namju/like-info-img.jpeg"
             alt=""
             className="like-info-img"
           />
