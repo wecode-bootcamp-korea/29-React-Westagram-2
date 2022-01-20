@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.scss';
-import '../../../../src/reset.scss';
-import { useState } from 'react';
 
 const Login = () => {
   const [idInput, setIdInput] = useState('');
   const [pwInput, setPwInput] = useState('');
+  const isLoginValid = idInput.includes('@') && pwInput.length > 4;
+  const navigate = useNavigate();
 
   const handleIdInput = event => {
     setIdInput(event.target.value);
@@ -16,12 +16,8 @@ const Login = () => {
     setPwInput(event.target.value);
   };
 
-  const [isActive, setIsActive] = useState(false);
-
   const isPassedLogin = () => {
-    return idInput.includes('@') && pwInput.length > 4
-      ? setIsActive(true)
-      : setIsActive(false);
+    return isLoginValid;
   };
 
   const handleKeyPress = e => {
@@ -30,7 +26,6 @@ const Login = () => {
     }
   };
 
-  const navigate = useNavigate();
   const goToMain = () => {
     navigate('/main-jihong');
   };
@@ -41,7 +36,7 @@ const Login = () => {
 
   return (
     <div className="loginContainer">
-      <form className="loginForm">
+      <div className="loginForm">
         <h1 className="formTitle">Westagram</h1>
 
         <form className="loginIdPwBtn">
@@ -51,6 +46,7 @@ const Login = () => {
             placeholder="Phone number, username or email"
             onChange={handleIdInput}
             onKeyUp={isPassedLogin}
+            onKeyPress={isLoginValid ? handleKeyPress : null}
           />
 
           <input
@@ -59,19 +55,13 @@ const Login = () => {
             placeholder="Password"
             onChange={handlePwInput}
             onKeyUp={isPassedLogin}
-            onKeyPress={
-              idInput.includes('@') && pwInput.length > 4
-                ? handleKeyPress
-                : null
-            }
+            onKeyPress={isLoginValid ? handleKeyPress : null}
           />
 
           <button
-            id={isActive ? 'loginBtnActive' : 'loginBtnDisable'}
+            id={isLoginValid ? 'loginBtnActive' : 'loginBtnDisable'}
             onClick={onClick}
-            disabled={
-              !idInput.includes('@') || pwInput.length < 4 ? true : false
-            }
+            disabled={!isLoginValid}
             type="button"
           >
             Log In
@@ -94,7 +84,7 @@ const Login = () => {
         <a className="formForgotPw" href="https://www.facebook.com/">
           Forgot password?
         </a>
-      </form>
+      </div>
     </div>
   );
 };

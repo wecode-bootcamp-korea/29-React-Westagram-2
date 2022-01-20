@@ -1,13 +1,12 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import CommentItem from './CommentItem';
 import './Feed.scss';
 
-const Feed = ({ userName, userImg, feedImg, description, comment }) => {
-  const [comments, setComments] = useState(comment);
+const Feed = ({ userName, userImg, feedImg, description, userComments }) => {
+  const [comments, setComments] = useState(userComments);
   const [commentInput, setCommentInput] = useState('');
-
   const [isLiked, setIsLiked] = useState(false);
+
   const isLikeClick = () => {
     setIsLiked(!isLiked);
   };
@@ -40,11 +39,7 @@ const Feed = ({ userName, userImg, feedImg, description, comment }) => {
 
       <div className="feedEmoticon">
         <button className="LikeEmoticon" onClick={isLikeClick}>
-          {isLiked ? (
-            <i className="fas fa-heart" />
-          ) : (
-            <i className="far fa-heart" />
-          )}
+          <i className={`${isLiked ? 'fas' : 'far'} fa-heart`} />
         </button>
         <i className="far fa-comment" />
         <i className="far fa-paper-plane" />
@@ -66,7 +61,7 @@ const Feed = ({ userName, userImg, feedImg, description, comment }) => {
       </div>
       <div className="userComment">
         <div className="comment">
-          {comments.map((comment, idx) => {
+          {comments?.map((comment, idx) => {
             return (
               <CommentItem
                 userName={comment.userName}
@@ -98,13 +93,3 @@ const Feed = ({ userName, userImg, feedImg, description, comment }) => {
 };
 
 export default Feed;
-
-/* comments.map((comment, idx) => (
-  <CommentItem
-    userName={comment.userName}
-    comment={comment}
-    key={idx}
-    setComments={setComments}
-    comments={comments}
-  />
-))} */

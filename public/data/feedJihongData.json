@@ -5,7 +5,7 @@
     "userImg": "/images/jihong/jordan.jpeg",
     "feedImg": "/images/jihong/nike.png",
     "description": "JUST Do IT",
-    "comment": [
+    "comments": [
       {
         "id": 1,
         "userName": "xxxInstagram_User_1",
@@ -32,7 +32,7 @@
     "userImg": "/images/jihong/sliman.jpeg",
     "feedImg": "/images/jihong/celine.jpeg",
     "description": "CELINE 22S/S",
-    "comment": [
+    "comments": [
       {
         "id": 1,
         "userName": "xxxInstagram_User_1",
@@ -59,7 +59,7 @@
     "userImg": "/images/jihong/demna.jpeg",
     "feedImg": "/images/jihong/vetement.jpeg",
     "description": "VETEMENTS 22S/S",
-    "comment": [
+    "comments": [
       {
         "id": 1,
         "userName": "xxxInstagram_User_1",

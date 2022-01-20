@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 const CommentItem = ({
   comment,
@@ -14,7 +13,7 @@ const CommentItem = ({
     setIsLiked(!isLiked);
   };
 
-  const onRemove = id => {
+  const deleteComment = id => {
     setComments(comments.filter(user => user.id !== id));
   };
 
@@ -24,13 +23,9 @@ const CommentItem = ({
         <span>{userName}</span>
         {comment.comment}
         <button className="likeBtn" onClick={isLikeClick}>
-          {isLiked ? (
-            <i className="fas fa-heart" />
-          ) : (
-            <i className="far fa-heart" />
-          )}
+          <i className={`${isLiked ? 'fas' : 'far'} fa-heart`} />
         </button>
-        <button className="deleteBtn" onClick={() => onRemove(id)}>
+        <button className="deleteBtn" onClick={() => deleteComment(id)}>
           X
         </button>
       </li>

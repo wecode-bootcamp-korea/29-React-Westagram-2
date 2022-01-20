@@ -1,19 +1,19 @@
 import React from 'react';
-import './Aside.scss';
 import AsideStory from './Story/AsideStory';
-import STORY_LIST from './Story/storyData';
-import AsideInfo from './Info/AsideInfo';
-import INFO_LIST from './Info/infoData';
 import AsideFollow from './Follow/AsideFollow';
+import AsideInfo from './Info/AsideInfo';
+import STORY_LIST from './Story/storyData';
+import INFO_LIST from './Info/infoData';
 import FOLLOW_LIST from './Follow/followData';
+import './Aside.scss';
 
 const Aside = () => {
   return (
-    <div className="aside">
+    <aside className="aside">
       <div className="asideProfile">
         <img
           className="profileImg3"
-          src="./images/jihong/jihong.jpeg"
+          src="/images/jihong/jihong.jpeg"
           alt="프로필"
         />
         <div>
@@ -65,7 +65,7 @@ const Aside = () => {
         })}
         <p>© 2022 WESTAGRAM FROM META</p>
       </div>
-    </div>
+    </aside>
   );
 };
 
