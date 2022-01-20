@@ -2,7 +2,8 @@ import React from 'react';
 import './Aside.scss';
 import AsideStory from './Story/AsideStory';
 import STORY_LIST from './Story/storyData';
-import AsideInfo from './AsideInfo';
+import AsideInfo from './Info/AsideInfo';
+import INFO_LIST from './Info/infoData';
 import AsideFollow from './Follow/AsideFollow';
 import FOLLOW_LIST from './Follow/followData';
 
@@ -58,7 +59,12 @@ const Aside = () => {
           })}
         </div>
       </div>
-      <AsideInfo />
+      <div className="asideInfo">
+        {INFO_LIST.map(info => {
+          return <AsideInfo key={info.key} item={info.item} />;
+        })}
+        <p>© 2022 WESTAGRAM FROM META</p>
+      </div>
     </div>
   );
 };
